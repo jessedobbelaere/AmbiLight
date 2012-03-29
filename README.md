@@ -10,8 +10,8 @@ Als mogelijke uitbreiding kunnen we een webapplicatie of smartphone app ontwikke
 ## Logboek
 Voor het logboek van de software updates voorzien we voornamelijk de Commit history.
 
-do 01/03/2012: 		Eerste contactmoment
-ma 19/03/2012: 		Bespreking Projecten1 met projectbegeleidster
-di 20/03/2012:		Bestelling elektronica
-vr 23/03/2012:		Levering RGB Ledstrip 5m + TLC5940NT IC componenten
-do 29/03/2012: 		Samenkomst en eerste assemblage met test van zelfgeschreven ConsoleApp in C# om de RGB leds te sturen
+* do 01/03/2012: Eerste contactmoment
+* ma 19/03/2012: Bespreking Projecten1 met projectbegeleidster
+* di 20/03/2012: Bestelling elektronica
+* vr 23/03/2012: Levering RGB Ledstrip 5m + TLC5940NT IC componenten
+* do 29/03/2012: Samenkomst en eerste assemblage met test van zelfgeschreven ConsoleApp in C# om de RGB leds te sturen
