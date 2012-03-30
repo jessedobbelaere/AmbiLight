@@ -1,0 +1,5 @@
+\\psf\Home\Dropbox\KAHO\2ICT\Projecten1\src\TestcaseSerialCom\bin\Debug\TestcaseSerialCom.exe
+\\psf\Home\Dropbox\KAHO\2ICT\Projecten1\src\TestcaseSerialCom\bin\Debug\TestcaseSerialCom.pdb
+\\psf\Home\Dropbox\KAHO\2ICT\Projecten1\src\TestcaseSerialCom\obj\x86\Debug\ResolveAssemblyReference.cache
+\\psf\Home\Dropbox\KAHO\2ICT\Projecten1\src\TestcaseSerialCom\obj\x86\Debug\TestcaseSerialCom.exe
+\\psf\Home\Dropbox\KAHO\2ICT\Projecten1\src\TestcaseSerialCom\obj\x86\Debug\TestcaseSerialCom.pdb

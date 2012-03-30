@@ -49,7 +49,9 @@
 
 #include "Tlc5940.h"
 
-int red=0,green=0,blue=0;
+int red=0; 
+int green=0;
+int blue=255;
 int brightness = 0;    // how bright the LED is
 int fadeAmount = 16;    // how many points to fade the LED by
 
@@ -84,9 +86,13 @@ void loop()
       brightness=0;
  
    
-      Tlc.set(2, red);
       Tlc.set(1, green);
+      Tlc.set(2, red);
       Tlc.set(3, blue);
+      
+      Tlc.set(4, green);
+      Tlc.set(5, red);
+      Tlc.set(6, blue);
 
       Tlc.update();
     }
@@ -97,9 +103,12 @@ void loop()
     fadeAmount = -fadeAmount ; 
   }
   
-  Tlc.set(2, red+brightness);
-  Tlc.set(1, green+brightness);
+  Tlc.set(1, red+brightness);
+  Tlc.set(2, green+brightness);
   Tlc.set(3, blue+brightness);
+  Tlc.set(4, red+brightness);
+  Tlc.set(5, green+brightness);
+  Tlc.set(6, blue+brightness);
   Tlc.update();
   
 

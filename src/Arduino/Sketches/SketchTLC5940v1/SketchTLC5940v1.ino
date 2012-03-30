@@ -49,15 +49,15 @@
 
 #include "Tlc5940.h"
 
-byte red=0,green=0,blue=0;
+int red=0;    
+int green=0;
+int blue=0; 
 
 void setup()
 {
   /* Call Tlc.init() to setup the tlc.
      You can optionally pass an initial PWM value (0 - 4095) for all channels.*/
   Tlc.init();
-  
-  
   
    Serial.begin(9600);
 }
@@ -70,8 +70,6 @@ void setup()
 void loop()
 {
  
-  
-
     /* Tlc.clear() sets all the grayscale values to zero, but does not send
        them to the TLCs.  To actually send the data, call Tlc.update() */
     Tlc.clear();
@@ -79,6 +77,7 @@ void loop()
       red = Serial.read();
       green= Serial.read();
       blue = Serial.read(); 
+    }
  
 
     /* Tlc.set(channel (0-15), value (0-4095)) sets the grayscale value for
@@ -90,15 +89,18 @@ void loop()
        Like Tlc.clear(), this function only sets up the data, Tlc.update()
        will send the data. */
    
-      Tlc.set(2, red);
       Tlc.set(1, green);
+      Tlc.set(2, red);
       Tlc.set(3, blue);
+      
+      Tlc.set(4, green);
+      Tlc.set(5, red);
+      Tlc.set(6, blue);
 
     /* Tlc.update() sends the data to the TLCs.  This is when the LEDs will
        actually change. */
       Tlc.update();
-  }
-
+  
     delay(75);
   }
 
