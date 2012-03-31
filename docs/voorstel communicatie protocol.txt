@@ -1,0 +1,64 @@
+Voorstel communicatie protocol tussen c# app en arduino.
+
+
+"kanaal" is 1 ledstrip, bestaande uit 3 signalen dus (RGB)
+
+
+	 
+	|	SYN	|	Mode	|	R	|	G	|	B	|
+		
+SYN: 	synchronisatie-bit (10101010 ofzo, doet er weinig toe wat het precies is)
+
+Mode:	4 MSB:	Bepalen van welke mode (kanaal aansturen met rgb waardes die volgen/functie op arduino starten)
+				0000:	Kanaal aansturen (kanaal bepaald in 4 LSB)
+				0001:	Arduino mode 1 (bv: alle kanalen aanwezig zelfde waarde aansturen)
+						...
+				1111:	Arduino mode 15
+
+		4 LSB:	Indien mode kanaalaansturing bekozen:	Bepalen van welk kanaal
+				0000: 	Kanaal 0
+				0001:	Kanaal 1
+						...
+				1111:	Kanaal 15
+
+R,G,B:	Kleurwaardes (8 bit) (indien kanaal aansturing mode gekozen is)
+		
+Gezien we de arduino ook onafhankelijk van een pc willen aansturen is het nodig op de arduino zelf enkele functies te voorzien die kleuren genereren en weergeven. De mode byte kan die starten. Het is aan de functie die dan gestart word om zelf te bepalen hoeveel bytes hij leest uit de buffer om zijn werking te voorzien.
+
+
+
+Nadeel met bovenstaande is de overhead; elk kanaal moet na elkaar aangestuurd worden, kleurverandering zal dus de ledstrips doorlopen. Kans bestaat dat het merkbaar zal zijn dat laatste ledstrip later verandert dan eerste. 
+
+Onderstaand protocol stuurt alle kleurinformatie voor elk kanaal na elkaar door. Alle kanalen zullen dus tegelijk verandere van zodra pakket ingelezen is. Nadeel is dat zenden langer duurt, en sync mis kan gaan door de vele bytes kleurinformatie na elkaar.
+
+
+	 
+	|	SYN	|	Mode	|	R	|	G	|	B	| ......... |	R	|	G	|	B	|	?STOP? |
+		
+SYN: 	synchronisatie-bit (10101010 ofzo, doet er weinig toe wat het precies is)
+
+Mode:	4 MSB:	Bepalen van welke mode (kanaal aansturen met rgb waardes die volgen/functie op arduino starten)
+
+		4 LSB:	Indien mode kanaalaansturing bekozen:	Bepalen van aantal kanalen dat volgt (kanalen*3 bytes)
+
+R,G,B:	Kleurwaardes (8 bit)
+
+
+
+
+
+
+Verwerking op arduino zelf
+
+
+
+if(serial.available()==5){
+	if(serial.readbyte() != syncbit)
+		{
+			return; //
+		}
+	mode=serial.readbyte();
+	
+	//analyse van mode byte, correcte functie oproepen
+	//functies zelf lezen volgende bytes 
+
