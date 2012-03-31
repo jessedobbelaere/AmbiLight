@@ -10,6 +10,7 @@ namespace TestcaseSerialCom {
 
         // Variables
         RgbControl rgb;
+        byte channel;
 
         /// <summary>
         /// Default-constructor
@@ -21,13 +22,21 @@ namespace TestcaseSerialCom {
         /// Start
         /// </summary>
         public void Start() {
-            rgb = new RgbControl("COM3", 9600);
+            
 
             Console.Clear();
             Console.WriteLine("**********************************************************");
             Console.WriteLine("*                ARDUINO RGB STRIP CONTROLLER            *");
             Console.WriteLine("**********************************************************");
             Console.WriteLine("\n");
+
+            Console.WriteLine("Enter COM-port of your Arduino (eg. COM9)");
+            string prt = Console.ReadLine();
+
+            Console.WriteLine("Choose which ledstrip to control (0-4):");
+            channel = byte.Parse(Console.ReadLine());
+
+            rgb = new RgbControl(prt, 9600);
 
             Menu();
         }
@@ -45,6 +54,7 @@ namespace TestcaseSerialCom {
                 Console.WriteLine("     b) Turn leds off");
                 Console.WriteLine("     c) Start RGB Crossfader (Work in progress)");
                 Console.WriteLine("     d) Start Police Strobelight");
+                Console.WriteLine("     e) Choose different channel");
 
                 string menuOption = Console.ReadLine();
 
@@ -64,11 +74,18 @@ namespace TestcaseSerialCom {
                     case "d":
                         StartPoliceLight();
                         break;
+                    case "e":
+                        ChooseChannel();
+                        break;
                     default:
                         validMenuOption = false;
                         break;
                 }
             }
+        }
+        public void ChooseChannel() {
+            Console.WriteLine("Choose which ledstrip to control (0-4):");
+            channel = byte.Parse(Console.ReadLine());
         }
 
         /// <summary>
@@ -86,7 +103,7 @@ namespace TestcaseSerialCom {
                 Console.Write("B:");
                 byte b = byte.Parse(Console.ReadLine());
 
-                rgb.SetSolidColor(r, g, b);
+                rgb.SetSolidColor(channel,r, g, b);
 
                 Console.Write("Go back (y/n)?");
                 string answer = Console.ReadLine();
@@ -102,7 +119,7 @@ namespace TestcaseSerialCom {
         /// Turn all leds off
         /// </summary>
         public void TurnOff() {
-            rgb.SetOff();
+            rgb.SetOff(channel);
             Menu();
         }
 
@@ -111,7 +128,7 @@ namespace TestcaseSerialCom {
         /// </summary>
         public void StartCrossFader() {            
             Console.WriteLine("Starting RGB Crossfader modus...Done!");
-            rgb.SetCrossFader();
+            rgb.SetCrossFader(channel);
         }
 
         /// <summary>
@@ -119,7 +136,7 @@ namespace TestcaseSerialCom {
         /// </summary>
         public void StartPoliceLight() {         
             Console.WriteLine("Starting RGB Crossfader modus...Done!");
-            rgb.SetPoliceLight();
+            rgb.SetPoliceLight(channel);
         }
 
 

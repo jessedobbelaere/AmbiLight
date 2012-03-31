@@ -13,6 +13,7 @@ namespace TestcaseSerialCom {
         private SerialPort serialPort;
         private string comPort;
         private int baudrate;
+        private byte startbit = 170; //aanpassen in zowel arduino code als hier!!!
 
 
         // Properties
@@ -43,20 +44,24 @@ namespace TestcaseSerialCom {
         /// <summary>
         /// Sends an RGB value through the serial connection
         /// </summary>
+        /// <param name="channel">The channel to send too</param>
         /// <param name="red">The red byte</param>
         /// <param name="green">The green byte</param>
         /// <param name="blue">The blue byte</param>
-        public void Send(byte red, byte green, byte blue) {
-            serialPort.Write((new byte[3] { green, red, blue }), 0, 3);   //  <-------- OPGELET! WAARDEN OMGEDRAAID
+        public void Send(byte channel, byte red, byte green, byte blue) {
+            serialPort.Write((new byte[2] { startbit, channel }), 0, 2);
+            serialPort.Write((new byte[3] {red, green, blue }), 0, 3);   
             serialPort.DiscardOutBuffer();
         }
 
         /// <summary>
         /// Sends a Color RGB value through the serial connection
         /// </summary>
+        /// <param name="channel">The channel to send too</param>
         /// <param name="color">A color (rgb)</param>
-        public void Send(Color color) {
-            serialPort.Write((new byte[3] { color.g, color.r, color.b }), 0, 3);   //  <-------- OPGELET! WAARDEN OMGEDRAAID
+        public void Send(byte channel, Color color) {
+            serialPort.Write((new byte[2] { startbit, channel }), 0, 2);
+            serialPort.Write((new byte[3] { color.r, color.g, color.b }), 0, 3);   
             serialPort.DiscardOutBuffer();
         }
 

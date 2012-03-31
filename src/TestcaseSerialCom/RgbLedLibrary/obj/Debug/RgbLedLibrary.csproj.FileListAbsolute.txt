@@ -3,3 +3,8 @@
 \\psf\Home\Dropbox\KAHO\2ICT\Projecten1\src\TestcaseSerialCom\RgbLedLibrary\obj\Debug\ResolveAssemblyReference.cache
 \\psf\Home\Dropbox\KAHO\2ICT\Projecten1\src\TestcaseSerialCom\RgbLedLibrary\obj\Debug\RgbLedLibrary.dll
 \\psf\Home\Dropbox\KAHO\2ICT\Projecten1\src\TestcaseSerialCom\RgbLedLibrary\obj\Debug\RgbLedLibrary.pdb
+C:\Users\Michael\Dropbox\school\Projecten 1\AmbiLight\src\TestcaseSerialCom\RgbLedLibrary\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Michael\Dropbox\school\Projecten 1\AmbiLight\src\TestcaseSerialCom\RgbLedLibrary\obj\Debug\RgbLedLibrary.dll
+C:\Users\Michael\Dropbox\school\Projecten 1\AmbiLight\src\TestcaseSerialCom\RgbLedLibrary\bin\Debug\RgbLedLibrary.dll
+C:\Users\Michael\Dropbox\school\Projecten 1\AmbiLight\src\TestcaseSerialCom\RgbLedLibrary\bin\Debug\RgbLedLibrary.pdb
+C:\Users\Michael\Dropbox\school\Projecten 1\AmbiLight\src\TestcaseSerialCom\RgbLedLibrary\obj\Debug\RgbLedLibrary.pdb

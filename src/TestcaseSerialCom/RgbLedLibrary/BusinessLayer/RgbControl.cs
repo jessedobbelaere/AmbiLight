@@ -33,21 +33,21 @@ namespace RgbLedLibrary.BusinessLayer {
         /// <param name="red">Red color byte</param>
         /// <param name="green">Green color byte</param>
         /// <param name="blue">Blue color byte</param>
-        public void SetSolidColor(byte red, byte green, byte blue) {
-            serial.Send(red, green, blue);
+        public void SetSolidColor(byte channel, byte red, byte green, byte blue) {
+            serial.Send(channel,red, green, blue);
         }
 
         /// <summary>
         /// Turn all leds off
         /// </summary>
-        public void SetOff() {
-            serial.Send(0, 0, 0);
+        public void SetOff(byte channel) {
+            serial.Send(channel,0, 0, 0);
         }
 
         /// <summary>
         /// Set leds to simulate a crossfader
         /// </summary>
-        public void SetCrossFader() {
+        public void SetCrossFader(byte channel) {
             Color ActualColor = new Color(255, 0, 0);
             int State = 0;
             PrimaryColor[] Order = { PrimaryColor.Red, PrimaryColor.Green, PrimaryColor.Blue };
@@ -79,7 +79,7 @@ namespace RgbLedLibrary.BusinessLayer {
 
                 if (State == Order.Length) State = 0;
 
-                serial.Send(ActualColor);
+                serial.Send(channel,ActualColor);
             }
 
         }
@@ -87,24 +87,24 @@ namespace RgbLedLibrary.BusinessLayer {
         /// <summary>
         /// Set leds to simulate a police strobelight
         /// </summary>
-        public void SetPoliceLight() {
+        public void SetPoliceLight(byte channel) {
             int sleep = 0;
             double sleepLonger = sleep + 20;
 
             while (true) {
                 for (int i = 0; i < 3; i++) {
-                    serial.Send(255, 0, 0);
+                    serial.Send(channel,255, 0, 0);
                     Thread.Sleep(sleep);
-                    serial.Send(0, 0, 0);
+                    serial.Send(channel,0, 0, 0);
                     Thread.Sleep(sleep);
                 }
 
                 Thread.Sleep((int)sleepLonger);
 
                 for (int i = 0; i < 3; i++) {
-                    serial.Send(0, 0, 255);
+                    serial.Send(channel,0, 0, 255);
                     Thread.Sleep(sleep);
-                    serial.Send(0, 0, 0);
+                    serial.Send(channel,0, 0, 0);
                     Thread.Sleep(sleep);
                 }
 
