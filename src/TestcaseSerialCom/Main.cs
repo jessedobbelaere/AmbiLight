@@ -36,7 +36,7 @@ namespace TestcaseSerialCom {
             Console.WriteLine("Choose which ledstrip to control (0-4):");
             channel = byte.Parse(Console.ReadLine());
 
-            rgb = new RgbControl(prt, 9600);
+            rgb = new RgbControl(prt, 19200);
 
             Menu();
         }
@@ -54,7 +54,8 @@ namespace TestcaseSerialCom {
                 Console.WriteLine("     b) Turn leds off");
                 Console.WriteLine("     c) Start RGB Crossfader (Work in progress)");
                 Console.WriteLine("     d) Start Police Strobelight");
-                Console.WriteLine("     e) Choose different channel");
+                Console.WriteLine("     e) Start Strobelight");
+                Console.WriteLine("     f) Choose different channel");
 
                 string menuOption = Console.ReadLine();
 
@@ -75,6 +76,9 @@ namespace TestcaseSerialCom {
                         StartPoliceLight();
                         break;
                     case "e":
+                        StartStrobelight();
+                        break;
+                    case "f":
                         ChooseChannel();
                         break;
                     default:
@@ -137,6 +141,14 @@ namespace TestcaseSerialCom {
         public void StartPoliceLight() {         
             Console.WriteLine("Starting RGB Crossfader modus...Done!");
             rgb.SetPoliceLight(channel);
+        }
+
+        /// <summary>
+        /// Start strobelight
+        /// </summary>
+        public void StartStrobelight() {
+            Console.WriteLine("Starting RGB strobelight modus...Done!");
+            rgb.SetStrobeLight();
         }
 
 

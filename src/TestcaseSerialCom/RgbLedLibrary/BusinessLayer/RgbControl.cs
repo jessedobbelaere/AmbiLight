@@ -111,8 +111,11 @@ namespace RgbLedLibrary.BusinessLayer {
                 Thread.Sleep((int)sleepLonger);
 
             }
+        }
 
-
+        public void SetStrobeLight() {
+            int mode = 16; //0001 0000 = arduino mode 1?
+            serial.Send((byte)mode, 255, 255, 255);
         }
 
 

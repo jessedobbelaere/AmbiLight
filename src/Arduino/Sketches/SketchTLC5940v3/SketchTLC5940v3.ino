@@ -32,7 +32,7 @@ void setup()
   /* Call Tlc.init() to setup the tlc.
      You can optionally pass an initial PWM value (0 - 4095) for all channels.*/
   Tlc.init();
-  Serial.begin(9600);
+  Serial.begin(19200);
 }
 
 
@@ -57,7 +57,9 @@ void loop()
             break;
             
             //hier alle andere in-de-arduino-ingebouwde functies oproepen
-            
+          case 1:
+            setStrobeLight();
+            break;
             
           case 15:
             setAllChannels();
@@ -100,5 +102,16 @@ void setAllChannels()
         Tlc.update();
 }
 
-
-
+void setStrobeLight() {
+   Tlc.set(5, 255*4);
+   Tlc.set(4, 255*4);
+   Tlc.set(6, 255*4);
+   delayMicroseconds(500);
+   
+   Tlc.set(5, 0);
+   Tlc.set(4, 0);
+   Tlc.set(6, 0);
+   
+  delayMicroseconds(500);
+   
+}
