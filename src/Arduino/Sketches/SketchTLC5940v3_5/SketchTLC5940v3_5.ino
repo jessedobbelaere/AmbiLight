@@ -59,7 +59,12 @@ void loop()
       case 1:
         allColorsCycle();
         break;
-
+      case 2:
+        strobeLight();
+        break;
+      case 3:
+        PoliceLight();
+        break;
 
         //hier alle andere in-de-arduino-ingebouwde functies oproepen
 
@@ -147,6 +152,37 @@ void allColorsCycle() // zie https://gist.github.com/766994 Work in progress, we
       }
     }
   }
+}
+
+
+void strobeLight() {
+   while(Serial.available()<4) {
+      setAll(255, 255, 255);
+      delay(25);
+      setAll(0, 0, 0);
+      delay(25);
+   } 
+}
+
+void PoliceLight() {
+   while(Serial.available()<4){
+      for(int i=0; i < 2; i++) {
+        setAll(255, 0, 0);
+        delay(50);
+        setAll(0, 0, 0);
+        delay(50);
+      } 
+      
+      delay(150);
+      
+     for(int i=0; i < 2; i++) {
+        setAll(0, 0, 255);
+        delay(50);
+        setAll(0, 0, 0);
+        delay(50);
+      } 
+      
+   }
 }
 
 
