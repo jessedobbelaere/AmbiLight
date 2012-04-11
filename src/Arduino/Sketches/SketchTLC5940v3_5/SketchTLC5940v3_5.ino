@@ -30,9 +30,7 @@ byte red=0,green=0,blue=0;
 
 void setup()
 {
-  /* Call Tlc.init() to setup the tlc.
-   You can optionally pass an initial PWM value (0 - 4095) for all channels.*/
-  Tlc.init();
+  Tlc.init(2);
   Serial.begin(19200);
 }
 
@@ -46,18 +44,19 @@ void loop()
    indien niet word deze verwijdert uit buffer (duh) */
   if (Serial.available() >= 5){
     if(Serial.read()==startbit){ //startbit staat op 170
-      int input = Serial.read();
+      byte input = Serial.read();
 
 
       mode = input >> 4; // 4 keer right shift op input om zo de 4 MSB bits van mode te bekomen
-      byte channel = input & 15; //logische AND met 15 om enkel 4 LSB te behouden
+      byte options = input & B00001111; //logische AND met 15 om enkel 4 LSB te behouden
+      
 
       switch (mode){
       case 0:
-        setChannel(channel);
+        setChannel(options);
         break;
       case 1:
-        allColorsCycle();
+        allColorsCycle(options);
         break;
       case 2:
         strobeLight();
@@ -96,6 +95,7 @@ void setChannel(byte channel, int red, int green, int blue)
 
 void setAll(int red, int green, int blue)
 {
+  //hier uiteindelijk loop die door # ledstrips gaat. Word ingegeven door mode 14 (configuratie mode)
 
   Tlc.set(2, red*16);
   Tlc.set(1, green*16);
@@ -128,8 +128,9 @@ void setAllChannels()
 }
 
 //mode 1
-void allColorsCycle() // zie https://gist.github.com/766994 Work in progress, werk niet!
+void allColorsCycle(byte options) // source: https://gist.github.com/766994 
 {
+  long del=64;
   while(Serial.available()<4){
     unsigned int rgbColour[3];
 
@@ -148,13 +149,21 @@ void allColorsCycle() // zie https://gist.github.com/766994 Work in progress, we
         rgbColour[incColour] += 1;
 
         setAll(rgbColour[0], rgbColour[1], rgbColour[2]);
-        delay(5);
+        
+        delay(del);
+        
+        if(Serial.available()>3){
+          setAll(0,0,0);
+          return;
+        }
+        
       }
     }
   }
+  setAll(0,0,0);
 }
 
-
+//mode 2
 void strobeLight() {
    while(Serial.available()<4) {
       setAll(255, 255, 255);
@@ -164,6 +173,7 @@ void strobeLight() {
    } 
 }
 
+//mode 3
 void PoliceLight() {
    while(Serial.available()<4){
       for(int i=0; i < 2; i++) {

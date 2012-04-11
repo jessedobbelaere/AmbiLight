@@ -63,6 +63,36 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UserControls\ArduinoUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\ArduinoUC.Designer.cs">
+      <DependentUpon>ArduinoUC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\ColorCycle.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\ColorCycle.Designer.cs">
+      <DependentUpon>ColorCycle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\EffectUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\EffectUC.Designer.cs">
+      <DependentUpon>EffectUC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\PoliceUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\PoliceUC.Designer.cs">
+      <DependentUpon>PoliceUC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\StrobeUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\StrobeUC.Designer.cs">
+      <DependentUpon>StrobeUC.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="ConnectSettings.resx">
       <DependentUpon>ConnectSettings.cs</DependentUpon>
     </EmbeddedResource>
@@ -78,6 +108,15 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="UserControls\ArduinoUC.resx">
+      <DependentUpon>ArduinoUC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\ColorCycle.resx">
+      <DependentUpon>ColorCycle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\StrobeUC.resx">
+      <DependentUpon>StrobeUC.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

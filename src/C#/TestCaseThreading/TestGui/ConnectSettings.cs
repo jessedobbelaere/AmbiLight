@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using System.IO.Ports;
 
 namespace TestGui {
     public partial class ConnectSettings : Form {
@@ -37,8 +38,10 @@ namespace TestGui {
         /// </summary>
         /// <param name="cb">Combobox name</param>
         private void fillCombobox(ComboBox cb) {
-            for(int i= 1; i<=12; i++) {
-                cb.Items.Add("COM" + i);
+            //get available com ports
+            string[] ports = SerialPort.GetPortNames();
+            foreach(string s in ports) {
+                cb.Items.Add(s);
             }
             cb.SelectedIndex = 0;
         }

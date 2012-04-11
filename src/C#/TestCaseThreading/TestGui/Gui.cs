@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using TestGui;
+using TestGui.UserControls;
 
 namespace TestCaseThreading {
     public partial class Gui : Form {
@@ -14,6 +15,8 @@ namespace TestCaseThreading {
         // Variables
         private BL bl;
         private UpdateLogDelegate deleg;
+        private ArduinoUC modeconfigUC;
+        private EffectUC effectconfigUC;
 
         /// <summary>
         /// Constructor
@@ -21,16 +24,26 @@ namespace TestCaseThreading {
         public Gui() {
             InitializeComponent();
 
-            Opvullen(comboBoxSource, typeof(Source));
+            Opvullen(comboBoxSource, typeof(Source)); //screencap combobox
+            Opvullen(comboBoxAMode, typeof(ArduinoModes)); //arduino modes combobox
+            Opvullen(comboBoxEffect, typeof(Effects)); //pc modes combobox
 
             deleg = new UpdateLogDelegate(addToLog);
             deleg("Application started");
+
+            //aanmaken businesslayer
+            bl = new BL(deleg);
+
+            
+            
         }
 
+        #region GUI code
+
         /// <summary>
-        /// Add text to the logscreen
+        /// Lijn toevoegen aan log
         /// </summary>
-        /// <param name="s">String with textinfo</param>
+        /// <param name="s">String met text voor log</param>
         private void addToLog(string s) {
 
             if (textBoxLog.InvokeRequired) {
@@ -60,40 +73,94 @@ namespace TestCaseThreading {
         }
 
         /// <summary>
-        /// Start a colorcycle FX
+        /// Opent het comport connectie venster
         /// </summary>
-        /// <param name="sender">Object that raised the event</param>
-        /// <param name="e">Event arguments</param>
-        private void buttonColorCycle_Click(object sender, EventArgs e) {
-            if (bl != null) {
-                bl.StartFx(1);
-                deleg("Started the color cycle");
+        private void ShowConnectDialog(){
+            ConnectSettings connectsettings = new ConnectSettings();
+            connectsettings.ShowDialog();
+
+            if (connectsettings.DialogResult == DialogResult.OK) {
+                bl.SetSerial(connectsettings.ComPort);
             }
         }
 
-        /// <summary>
-        /// Start a strobelight FX
-        /// </summary>
-        /// <param name="sender">Object that raised the event</param>
-        /// <param name="e">Event arguments</param>
-        private void buttonStrobeLight_Click(object sender, EventArgs e) {
-            if (bl != null) {
-                bl.StartFx(2);
-                deleg("Started the Stroboscope"); 
-            }
+        private void ShowErrorMessage(string s) {
+            MessageBox.Show(s, "Foutmelding", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         /// <summary>
-        /// Start a police light FX
+        /// Laadt nieuwe usercontrol in wanneer mode veranderd word in de combobox
         /// </summary>
-        /// <param name="sender">Object that raised the event</param>
-        /// <param name="e">Event arguments</param>
-        private void buttonPoliceLight_Click(object sender, EventArgs e) {
-            if (bl != null) {
-                bl.StartFx(3);
-                addToLog("Started the Police Light"); 
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void updateAModeConfigUC(object sender, EventArgs e) {
+            switch ((ArduinoModes)Enum.Parse(typeof(ArduinoModes), this.comboBoxAMode.SelectedItem.ToString())) {
+                case ArduinoModes.Colorcycle:
+                    this.groupBoxAModeConfig.Controls.Clear();
+                    modeconfigUC = new ColorCycleUC();
+                    this.groupBoxAModeConfig.Controls.Add(new ColorCycleUC());
+                    break;
+                case ArduinoModes.Strobe:
+                    this.groupBoxAModeConfig.Controls.Clear();
+                    modeconfigUC = new StrobeUC();
+                    this.groupBoxAModeConfig.Controls.Add(modeconfigUC);
+                    break;
+                case ArduinoModes.PoliceLight:
+                    this.groupBoxAModeConfig.Controls.Clear();
+                    modeconfigUC = new PoliceUC();
+                    this.groupBoxAModeConfig.Controls.Add(modeconfigUC);
+                    break;
             }
         }
+        /// <summary>
+        /// Laadt nieuwe usercontrol in wanneer effect veranderd word in de combobox
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void updatePCEffectConfigUC(object sender, EventArgs e) {
+            switch ((Effects)Enum.Parse(typeof(Effects), this.comboBoxEffect.SelectedItem.ToString())) {
+                ////this.panelEffConfig.Controls.Add(effectconfigUC);
+                default:
+                    break;
+            }
+        }
+        #endregion
+
+        private void buttonModeStartClick(object sender, EventArgs e) {
+            if (bl.SerialWorks) {
+                switch ((ArduinoModes)Enum.Parse(typeof(ArduinoModes), this.comboBoxAMode.SelectedItem.ToString())) {
+                    //TODO: hier options en bytes meegeven v instellingen user controls
+                    case ArduinoModes.Colorcycle:
+                        bl.StartFx(1);
+                        addToLog("Started the color cycle mode");
+                        break;
+                    case ArduinoModes.Strobe:
+                        bl.StartFx(2);
+                        addToLog("Started the Strobe");
+                        break;
+                    case ArduinoModes.PoliceLight:
+                        bl.StartFx(3);
+                        addToLog("Started Police Light mode");
+                        break;
+                    default:
+                        System.Diagnostics.Debug.Print("Something went awfuly wrong with the Arduino Mode dropdown. Are you a magician?");
+                        break;
+                }
+            }
+            else {
+                ShowErrorMessage("Please connect to a serial port before starting. Use File > Connect from the menu");
+            }
+        }
+
+        private void buttonModeStop_Click(object sender, EventArgs e) {
+            if (bl.SerialWorks) {
+                bl.StopFX();
+            }
+            else {
+                ShowErrorMessage("Please connect to a serial port before starting. Use File > Connect from the menu");
+            }
+        }
+
 
         /// <summary>
         /// Connect to a selected COM Port from the popup.
@@ -101,13 +168,7 @@ namespace TestCaseThreading {
         /// <param name="sender">Object that raised the event</param>
         /// <param name="e">Event arguments</param>
         private void connectToolStripMenuItem_Click(object sender, EventArgs e) {
-            ConnectSettings connectsettings = new ConnectSettings();
-            connectsettings.ShowDialog();
-
-            if (connectsettings.DialogResult == DialogResult.OK) {
-                bl = new BL(connectsettings.ComPort, deleg);
-            }
-
+            ShowConnectDialog();
         }
 
         /// <summary>
@@ -116,9 +177,10 @@ namespace TestCaseThreading {
         /// <param name="sender">Object that raised the event</param>
         /// <param name="e">Event arguments</param>
         private void disconnectToolStripMenuItem_Click(object sender, EventArgs e) {
-            if (bl != null) {
+            if (bl.SerialWorks) {
                 bl.StopSerial(); 
             }
+            
         }
 
         /// <summary>
@@ -136,9 +198,12 @@ namespace TestCaseThreading {
         /// <param name="sender">Object that raised the event</param>
         /// <param name="e">Event arguments</param>
         private void buttonStartScreen_Click(object sender, EventArgs e) {
-            if (bl != null) {
+            if (bl.SerialWorks) {
                 bl.SetColorSource((Source)Enum.Parse(typeof(Source), this.comboBoxSource.SelectedItem.ToString()));
-                bl.Start(); 
+                bl.StartSource(); 
+            }
+            else {
+                ShowErrorMessage("Please connect to a serial port before starting. Use File > Connect from the menu");
             }
         }
 
@@ -148,8 +213,8 @@ namespace TestCaseThreading {
         /// <param name="sender">Object that raised the event</param>
         /// <param name="e">Event arguments</param>
         private void buttonStopScreen_Click(object sender, EventArgs e) {
-            if (bl != null) {
-                bl.Stop(); 
+            if (bl.SerialWorks) {
+                bl.StopSource(); 
             }
         }
 
@@ -160,8 +225,11 @@ namespace TestCaseThreading {
         /// <param name="sender">Object that raised the event</param>
         /// <param name="e">Event arguments</param>
         private void startToolStripMenuItem_Click_1(object sender, EventArgs e) {
-            if (bl != null) {
+            if (bl.SerialWorks) {
                 bl.StartServer(); 
+            }
+            else {
+                ShowErrorMessage("Please connect to a serial port before starting. Use File > Connect from the menu");
             }
         }
 
@@ -171,13 +239,13 @@ namespace TestCaseThreading {
         /// <param name="sender">Object that raised the event</param>
         /// <param name="e">Event arguments</param>
         private void stopToolStripMenuItem_Click(object sender, EventArgs e) {
-            if (bl != null) {
+            if (bl.SerialWorks) {
                 bl.StopServer();
             }
+            else {
+                ShowErrorMessage("Please connect to a serial port before starting. Use File > Connect from the menu");
+            }
         }
-
-
-
 
     }
 }

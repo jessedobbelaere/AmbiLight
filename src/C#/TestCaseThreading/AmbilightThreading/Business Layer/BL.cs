@@ -11,27 +11,50 @@ namespace TestCaseThreading {
 
         // Variables
         private SerialCom serial;
+        private bool serialWorks;
         private Server server;
         private ColorSource source;
         private UpdateLogDelegate deleg;
         private Thread startServerThread;
 
-        /// <summary>
-        /// Constructor
-        /// </summary>
-        /// <param name="comPort">The COM port</param>
-        public BL(string comPort) {
-            this.serial = new SerialCom(comPort, 19200);
+        public bool SerialWorks {
+            get {
+                return serialWorks;
+            }
         }
 
         /// <summary>
         /// Constructor
         /// </summary>
-        /// <param name="comPort">The COM port</param>
+        public BL() {}
+
+        /// <summary>
+        /// Constructor
+        /// </summary>
         /// <param name="deleg">A delegate to update a log</param>
-        public BL(string comPort, UpdateLogDelegate deleg) {
-            this.serial = new SerialCom(comPort, 19200, deleg);
+        public BL(UpdateLogDelegate deleg) {
             this.deleg = deleg;
+        }
+
+
+
+        public void SetSerial(string comPort){
+            try{
+                this.serial = new SerialCom(comPort, 19200, deleg);
+                this.serialWorks = true;
+            }
+            catch(Exception e){
+                this.serialWorks =false;
+                deleg("Failed to connect to serial port " + comPort);
+                System.Diagnostics.Debug.Print(e.ToString());
+            }
+        }
+        /// <summary>
+        /// Disconnect the serial connection
+        /// </summary>
+        public void StopSerial() {
+            serial.StopSerial();
+            this.serialWorks = false;
         }
 
         /// <summary>
@@ -55,24 +78,18 @@ namespace TestCaseThreading {
         /// <summary>
         /// Start the Source
         /// </summary>
-        public void Start() {
-            source.Start();
+        public void StartSource() {
+            this.source.Start();
         }
 
         /// <summary>
         /// Stop the source
         /// </summary>
-        public void Stop() {
+        public void StopSource() {
             source.Stop();
-            //serial.StopSerial();
         }
 
-        /// <summary>
-        /// Disconnect the serial connection
-        /// </summary>
-        public void StopSerial() {
-            serial.StopSerial();
-        }
+
 
         public void StartServer() {
             server = new Server(deleg);
@@ -91,6 +108,16 @@ namespace TestCaseThreading {
         /// </summary>
         public void StartFx(byte mode) {
             this.serial.Send(mode, 0, 0, 0, 0);
+        }
+        public void StartFx(byte mode, byte options) {
+            this.serial.Send(mode,options,0,0,0);
+        }
+        public void StartFx(byte mode, byte options, byte[] bytes) {
+            this.serial.Send(mode, options, bytes);
+        }
+
+        public void StopFX() {
+            this.serial.Send(15, 0, 0, 0);
         }
 
     }

@@ -3,3 +3,8 @@
 \\psf\Home\Dropbox\KAHO\2ICT\Projecten1\src\TestCaseThreading\AmbilightThreading\obj\Debug\ResolveAssemblyReference.cache
 \\psf\Home\Dropbox\KAHO\2ICT\Projecten1\src\TestCaseThreading\AmbilightThreading\obj\Debug\AmbilightThreading.dll
 \\psf\Home\Dropbox\KAHO\2ICT\Projecten1\src\TestCaseThreading\AmbilightThreading\obj\Debug\AmbilightThreading.pdb
+C:\Users\Michael\Dropbox\school\Projecten 1\AmbiLight\src\C#\TestCaseThreading\AmbilightThreading\bin\Debug\AmbilightThreading.dll
+C:\Users\Michael\Dropbox\school\Projecten 1\AmbiLight\src\C#\TestCaseThreading\AmbilightThreading\bin\Debug\AmbilightThreading.pdb
+C:\Users\Michael\Dropbox\school\Projecten 1\AmbiLight\src\C#\TestCaseThreading\AmbilightThreading\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Michael\Dropbox\school\Projecten 1\AmbiLight\src\C#\TestCaseThreading\AmbilightThreading\obj\Debug\AmbilightThreading.dll
+C:\Users\Michael\Dropbox\school\Projecten 1\AmbiLight\src\C#\TestCaseThreading\AmbilightThreading\obj\Debug\AmbilightThreading.pdb

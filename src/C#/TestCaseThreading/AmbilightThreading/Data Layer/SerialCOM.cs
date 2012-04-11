@@ -81,7 +81,7 @@ namespace TestCaseThreading {
         /// <param name="green">The green color</param>
         /// <param name="blue">The blue color</param>
         public void Send(byte modus, byte options, byte red, byte green, byte blue) { //modes met 1 kleur input
-            this.mode = (byte)((modus << 4) + options);
+            this.mode = (byte)((modus << 4) + (options));
             port.Write((new byte[2] { this.startbit, this.mode }), 0, 2);
             port.Write((new byte[3] { red, green, blue }), 0, 3);
 
@@ -95,11 +95,12 @@ namespace TestCaseThreading {
         /// <param name="options">Extra mode-specific options (eg. number of bytes to follow)</param>
         /// <param name="bytes">Bytes of information to send</param>
         public void Send(byte modus, byte options, byte[] bytes) { //modes met meerdere kleuren input
-            this.mode =(byte) ((modus << 4)+options);
+            this.mode = (byte)((modus << 4) + (options));
             port.Write((new byte[2] { this.startbit, this.mode }), 0, 2);
             port.Write(bytes, 0, bytes.Length);
 
             port.DiscardOutBuffer();
+            deleg("Arduino set to mode "+modus.ToString());
         }
     }
 }

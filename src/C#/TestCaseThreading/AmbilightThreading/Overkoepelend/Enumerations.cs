@@ -8,4 +8,14 @@ namespace TestCaseThreading {
         Screencap ,
         ScreencapThreaded 
     }
+
+    public enum ArduinoModes {
+        Strobe,
+        PoliceLight,
+        Colorcycle
+    }
+
+    public enum Effects {
+        EMPTY
+    }
 }
