@@ -5,4 +5,5 @@ using System.Text;
 
 namespace TestCaseThreading {
     public delegate void UpdateLogDelegate(string s);
+    public delegate void ShowError(string s);
 }

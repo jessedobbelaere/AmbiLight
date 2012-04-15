@@ -14,16 +14,16 @@ namespace TestCaseThreading.ColorSources {
         private System.Timers.Timer timer = new System.Timers.Timer();
 
         //constructor
-        public Screencap(SerialCom sc) : base(sc) {
+        public Screencap(SerialCom sc){
             this.serial = sc;
         }
 
-        public override void Start() {
+        public void Start() {
             timer.Interval = 500; //interval waarmee scherm geanalyseerd word
             timer.Elapsed += new System.Timers.ElapsedEventHandler(elapsed);
             timer.Start();
         }
-        public override void Stop() {
+        public void Stop() {
             Output(15, 0, 0, 0);
             timer.Stop();
         }
@@ -93,7 +93,7 @@ namespace TestCaseThreading.ColorSources {
             gfx.Dispose();
             
         }
-        public override void Output(byte channel, byte r, byte g, byte b){
+        public void Output(byte channel, byte r, byte g, byte b){
             byte mode = 15; 
             serial.Send(mode,channel, r,g,b);
             System.Diagnostics.Debug.Print("Following data has been sent over {0}: Channel {1}, RGB: {2},{3},{4} ",serial.Comport,channel,r,g,b);

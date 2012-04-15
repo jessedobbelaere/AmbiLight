@@ -55,6 +55,7 @@ namespace TestCaseThreading {
         public void StopSerial() {
             serial.StopSerial();
             this.serialWorks = false;
+            this.serial = null;
         }
 
         /// <summary>
@@ -70,7 +71,7 @@ namespace TestCaseThreading {
                     source = new ScreencapThread(serial);
                     break;
                 default:
-                    source = new ScreencapThread(serial);
+                    System.Diagnostics.Debug.Print("Optie nog niet in busineslayer geimplementeerd");
                     break;
             }
         }

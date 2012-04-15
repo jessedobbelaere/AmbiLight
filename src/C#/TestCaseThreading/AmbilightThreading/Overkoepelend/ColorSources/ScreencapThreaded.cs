@@ -18,19 +18,19 @@ namespace TestCaseThreading.ColorSources {
         private Size size;
 
         //constructor
-        public ScreencapThread(SerialCom sc) : base(sc) {
+        public ScreencapThread(SerialCom sc) {
             this.serial = sc;
             this.size = Screen.PrimaryScreen.Bounds.Size;
         }
 
-        public override void Start() {
+        public void Start() {
             this.running = true;
             t = new Thread(new ThreadStart(capScreen));
             t.Name = "Screen capture and analysation thread";
             t.IsBackground = true;
             t.Start();
         }
-        public override void Stop() {
+        public void Stop() {
             this.running = false;
             t.Abort();
             Output(15, 0, 0, 0); //alle leds uit
@@ -110,7 +110,7 @@ namespace TestCaseThreading.ColorSources {
             }
 
         }
-        public override void Output(byte channel, byte r, byte g, byte b) {
+        public void Output(byte channel, byte r, byte g, byte b) {
             byte mode = 15;
             serial.Send(mode, channel, r, g, b);
             System.Diagnostics.Debug.Print("Following data has been sent over {0}: Channel {1}, RGB: {2},{3},{4} ", serial.Comport, channel, r, g, b);
