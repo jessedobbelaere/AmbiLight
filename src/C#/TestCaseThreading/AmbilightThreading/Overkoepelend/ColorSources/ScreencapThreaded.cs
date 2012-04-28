@@ -90,7 +90,7 @@ namespace TestCaseThreading.ColorSources {
                     int width = r.Width;
                     int height = r.Height;
 
-                    System.Diagnostics.Debug.Print("Verwerken regio {0}: {1},{2},{3},{4}", kanaal, xCoord, yCoord, width, height);
+                    //System.Diagnostics.Debug.Print("Verwerken regio {0}: {1},{2},{3},{4}", kanaal, xCoord, yCoord, width, height);
 
                     unsafe {
                         byte* p = (byte*)(void*)Scan0;
