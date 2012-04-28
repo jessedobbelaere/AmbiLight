@@ -45,6 +45,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Business Layer\BL.cs" />
+    <Compile Include="Data Layer\GDI.cs" />
     <Compile Include="Data Layer\SerialCOM.cs" />
     <Compile Include="Data Layer\Server.cs" />
     <Compile Include="Overkoepelend\ColorSources\ColorSource.cs" />
