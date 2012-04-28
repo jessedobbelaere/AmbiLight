@@ -63,6 +63,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UserControls\AmbilightUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\AmbilightUC.Designer.cs">
+      <DependentUpon>AmbilightUC.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\ArduinoUC.cs">
       <SubType>UserControl</SubType>
     </Compile>

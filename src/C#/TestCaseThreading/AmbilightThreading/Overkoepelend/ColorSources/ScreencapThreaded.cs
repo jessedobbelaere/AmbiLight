@@ -17,6 +17,7 @@ namespace TestCaseThreading.ColorSources {
         private bool running = false;
         private Thread t;
         private Size size;
+        private Rectangle[] regions = new Rectangle[2];
 
         //constructor
         public ScreencapThread(SerialCom sc) {
@@ -35,7 +36,7 @@ namespace TestCaseThreading.ColorSources {
             this.running = false;
             t.Abort();
 
-            Output(15, 0, 0, 0); //alle leds uit
+            //Output(15, 0, 0, 0); //alle leds uit
         }
 
         // vanaf hier screencapture specifieke code
@@ -70,39 +71,47 @@ namespace TestCaseThreading.ColorSources {
                     System.Diagnostics.Debug.Print(error.ToString());
                     return;
                 }
+                //DEBUGDEBUGDEBUG
 
-                //debugdebugdebugdebug
-                if (teller % 30 == 0) {
-                    bmp.Save("test" + teller.ToString() + ".bmp");
-                }
+                regions[0] = new Rectangle(0, 0, bmp.Width/2, bmp.Height);
+                regions[1] = new Rectangle(bmp.Width / 2, 0, bmp.Width / 2, bmp.Height);
+                
                 BitmapData srcData = bmp.LockBits(new Rectangle(0, 0, bmp.Width, bmp.Height),ImageLockMode.ReadOnly,PixelFormat.Format24bppRgb);
 
                 int stride = srcData.Stride;
                 IntPtr Scan0 = srcData.Scan0;
 
-                long[] totals = new long[] { 0, 0, 0 };
+                byte kanaal = 0;
+                foreach( Rectangle r in regions) {
+                    long[] totals = new long[] { 0, 0, 0 };
+                    
+                    int xCoord = r.X;
+                    int yCoord = r.Y;
+                    int width = r.Width;
+                    int height = r.Height;
 
-                int width = bmp.Width;
-                int height = bmp.Height;
+                    System.Diagnostics.Debug.Print("Verwerken regio {0}: {1},{2},{3},{4}", kanaal, xCoord, yCoord, width, height);
 
-                unsafe {
-                    byte* p = (byte*)(void*)Scan0;
+                    unsafe {
+                        byte* p = (byte*)(void*)Scan0;
 
-                    for (int y = 0; y < height; y++) {
-                        for (int x = 0; x < width; x++) {
-                            for (int color = 0; color < 3; color++) {
-                                int i = (y * stride) + x * 3 + color;
-                                totals[color] += p[i];
+                        for (int y = yCoord; y < height + yCoord; y++) {
+                            for (int x = xCoord; x < width + xCoord; x++) {
+                                for (int color = 0; color < 3; color++) {
+                                    int i = (y * stride) + x * 3 + color;
+                                    totals[color] += p[i];
+                                }
                             }
                         }
                     }
+
+                    byte avgR = (byte)(totals[2] / (float)(width * height));
+                    byte avgG = (byte)(totals[1] / (float)(width * height));
+                    byte avgB = (byte)(totals[0] / (float)(width * height));
+
+                    Output(kanaal, avgR, avgG, avgB);
+                    kanaal++;
                 }
-
-                byte avgR = (byte)(totals[2] / (width * height));
-                byte avgG = (byte)(totals[1] / (width * height));
-                byte avgB = (byte)(totals[0] / (width * height));
-
-                Output(0, avgR, avgG, avgB);
 
                 bmp.UnlockBits(srcData);//opruimen van rommel hier
                 bmp.Dispose();
@@ -114,7 +123,7 @@ namespace TestCaseThreading.ColorSources {
 
         }
         public void Output(byte channel, byte r, byte g, byte b) {
-            byte mode = 15;
+            byte mode = 0;
             serial.Send(mode, channel, r, g, b);
             System.Diagnostics.Debug.Print("Following data has been sent over {0}: Channel {1}, RGB: {2},{3},{4} ", serial.Comport, channel, r, g, b);
         }

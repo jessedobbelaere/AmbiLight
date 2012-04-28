@@ -8,11 +8,8 @@ using System.Text;
 using System.Windows.Forms;
 
 namespace TestGui.UserControls {
-    /// <summary>
-    /// Basisklasse waar elke andere pc effecten instellingen-usercontrol van erft
-    /// </summary>
-    public partial class EffectUC : ArduinoUC {
-        public EffectUC() {
+    public partial class AmbilightUC : UserControl {
+        public AmbilightUC() {
             InitializeComponent();
         }
     }
