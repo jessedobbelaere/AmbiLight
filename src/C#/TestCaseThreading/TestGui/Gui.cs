@@ -16,7 +16,7 @@ namespace TestCaseThreading {
         private BL bl;
         private UpdateLogDelegate deleg;
         private ArduinoUC modeconfigUC;
-        private EffectUC effectconfigUC;
+        private RegiosUC regiosUC;
 
         /// <summary>
         /// Constructor
@@ -26,16 +26,13 @@ namespace TestCaseThreading {
 
             Opvullen(comboBoxSource, typeof(Source)); //screencap combobox
             Opvullen(comboBoxAMode, typeof(ArduinoModes)); //arduino modes combobox
-            Opvullen(comboBoxEffect, typeof(Effects)); //pc modes combobox
+            Opvullen(comboBoxMethode, typeof(RegioMethodes)); //select regio combobox
 
             deleg = new UpdateLogDelegate(addToLog);
             deleg("Application started");
 
             //aanmaken businesslayer
-            bl = new BL(deleg);
-
-            
-            
+            bl = new BL(deleg);                   
         }
 
         #region GUI code
@@ -81,6 +78,8 @@ namespace TestCaseThreading {
 
             if (connectsettings.DialogResult == DialogResult.OK) {
                 bl.SetSerial(connectsettings.ComPort);
+            } else if (connectsettings.DialogResult == DialogResult.Retry) {
+                ShowConnectDialog();
             }
         }
 
@@ -112,18 +111,7 @@ namespace TestCaseThreading {
                     break;
             }
         }
-        /// <summary>
-        /// Laadt nieuwe usercontrol in wanneer effect veranderd word in de combobox
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void updatePCEffectConfigUC(object sender, EventArgs e) {
-            switch ((Effects)Enum.Parse(typeof(Effects), this.comboBoxEffect.SelectedItem.ToString())) {
-                ////this.panelEffConfig.Controls.Add(effectconfigUC);
-                default:
-                    break;
-            }
-        }
+
         #endregion
 
         private void buttonModeStartClick(object sender, EventArgs e) {
@@ -199,13 +187,15 @@ namespace TestCaseThreading {
         /// <param name="e">Event arguments</param>
         private void buttonStartScreen_Click(object sender, EventArgs e) {
             if (bl.SerialWorks) {
-                bl.SetColorSource((Source)Enum.Parse(typeof(Source), this.comboBoxSource.SelectedItem.ToString()));
+                bl.SetColorSource((Source)Enum.Parse(typeof(Source), this.comboBoxSource.SelectedItem.ToString()), regiosUC.GetRegions());
                 bl.StartSource(); 
             }
             else {
                 ShowErrorMessage("Please connect to a serial port before starting. Use File > Connect from the menu");
             }
         }
+
+        
 
         /// <summary>
         /// Stop the screen observation
@@ -246,6 +236,22 @@ namespace TestCaseThreading {
                 ShowErrorMessage("Please connect to a serial port before starting. Use File > Connect from the menu");
             }
         }
+
+        private void comboBoxMethode_SelectedIndexChanged(object sender, EventArgs e) {
+            switch ((RegioMethodes)Enum.Parse(typeof(RegioMethodes), this.comboBoxMethode.SelectedItem.ToString())) {
+                case RegioMethodes.Manueel:
+                    this.panelRegioConfig.Controls.Clear();
+                    regiosUC = new RegioManueel();
+                    this.panelRegioConfig.Controls.Add(regiosUC);
+                    break;
+                case RegioMethodes.Automatisch:
+                    this.panelRegioConfig.Controls.Clear();
+                    regiosUC = new RegioAutomatisch();
+                    this.panelRegioConfig.Controls.Add(regiosUC);
+                    break;
+            }
+        }
+
 
     }
 }

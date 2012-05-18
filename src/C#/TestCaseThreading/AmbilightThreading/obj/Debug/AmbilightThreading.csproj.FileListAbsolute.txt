@@ -8,3 +8,8 @@ C:\Users\Michael\Dropbox\school\Projecten 1\AmbiLight\src\C#\TestCaseThreading\A
 C:\Users\Michael\Dropbox\school\Projecten 1\AmbiLight\src\C#\TestCaseThreading\AmbilightThreading\obj\Debug\ResolveAssemblyReference.cache
 C:\Users\Michael\Dropbox\school\Projecten 1\AmbiLight\src\C#\TestCaseThreading\AmbilightThreading\obj\Debug\AmbilightThreading.dll
 C:\Users\Michael\Dropbox\school\Projecten 1\AmbiLight\src\C#\TestCaseThreading\AmbilightThreading\obj\Debug\AmbilightThreading.pdb
+C:\Users\Bert\Desktop\jessedobbelaere-AmbiLight-7fd55a1\src\C#\TestCaseThreading\AmbilightThreading\bin\Debug\AmbilightThreading.dll
+C:\Users\Bert\Desktop\jessedobbelaere-AmbiLight-7fd55a1\src\C#\TestCaseThreading\AmbilightThreading\bin\Debug\AmbilightThreading.pdb
+C:\Users\Bert\Desktop\jessedobbelaere-AmbiLight-7fd55a1\src\C#\TestCaseThreading\AmbilightThreading\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Bert\Desktop\jessedobbelaere-AmbiLight-7fd55a1\src\C#\TestCaseThreading\AmbilightThreading\obj\Debug\AmbilightThreading.dll
+C:\Users\Bert\Desktop\jessedobbelaere-AmbiLight-7fd55a1\src\C#\TestCaseThreading\AmbilightThreading\obj\Debug\AmbilightThreading.pdb

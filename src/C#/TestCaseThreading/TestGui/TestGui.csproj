@@ -63,11 +63,29 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UserControls\AmbilightUC.cs">
+    <Compile Include="NewRegion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NewRegion.Designer.cs">
+      <DependentUpon>NewRegion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\RegioAutomatisch.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControls\AmbilightUC.Designer.cs">
-      <DependentUpon>AmbilightUC.cs</DependentUpon>
+    <Compile Include="UserControls\RegioAutomatisch.Designer.cs">
+      <DependentUpon>RegioAutomatisch.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\RegioManueel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\RegioManueel.Designer.cs">
+      <DependentUpon>RegioManueel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\SingleRegioUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\SingleRegioUC.Designer.cs">
+      <DependentUpon>SingleRegioUC.cs</DependentUpon>
     </Compile>
     <Compile Include="UserControls\ArduinoUC.cs">
       <SubType>UserControl</SubType>
@@ -99,6 +117,12 @@
     <Compile Include="UserControls\StrobeUC.Designer.cs">
       <DependentUpon>StrobeUC.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\RegiosUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\RegiosUC.Designer.cs">
+      <DependentUpon>RegiosUC.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="ConnectSettings.resx">
       <DependentUpon>ConnectSettings.cs</DependentUpon>
     </EmbeddedResource>
@@ -114,6 +138,12 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="UserControls\RegioManueel.resx">
+      <DependentUpon>RegioManueel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\SingleRegioUC.resx">
+      <DependentUpon>SingleRegioUC.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UserControls\ArduinoUC.resx">
       <DependentUpon>ArduinoUC.cs</DependentUpon>
     </EmbeddedResource>

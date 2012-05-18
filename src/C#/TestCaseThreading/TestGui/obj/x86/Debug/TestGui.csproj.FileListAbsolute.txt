@@ -25,3 +25,20 @@ C:\Users\Michael\Dropbox\school\Projecten 1\AmbiLight\src\C#\TestCaseThreading\T
 C:\Users\Michael\Dropbox\school\Projecten 1\AmbiLight\src\C#\TestCaseThreading\TestGui\obj\x86\Debug\TestGui.UserControls.ColorCycleUC.resources
 C:\Users\Michael\Dropbox\school\Projecten 1\AmbiLight\src\C#\TestCaseThreading\TestGui\obj\x86\Debug\TestGui.UserControls.ArduinoUC.resources
 C:\Users\Michael\Dropbox\school\Projecten 1\AmbiLight\src\C#\TestCaseThreading\TestGui\obj\x86\Debug\TestGui.UserControls.StrobeUC.resources
+C:\Users\Bert\Desktop\jessedobbelaere-AmbiLight-7fd55a1\src\C#\TestCaseThreading\TestGui\obj\x86\Debug\TestGui.exe
+C:\Users\Bert\Desktop\jessedobbelaere-AmbiLight-7fd55a1\src\C#\TestCaseThreading\TestGui\obj\x86\Debug\TestGui.pdb
+C:\Users\Bert\Desktop\jessedobbelaere-AmbiLight-7fd55a1\src\C#\TestCaseThreading\TestGui\bin\Debug\TestGui.exe
+C:\Users\Bert\Desktop\jessedobbelaere-AmbiLight-7fd55a1\src\C#\TestCaseThreading\TestGui\bin\Debug\TestGui.pdb
+C:\Users\Bert\Desktop\jessedobbelaere-AmbiLight-7fd55a1\src\C#\TestCaseThreading\TestGui\bin\Debug\AmbilightThreading.dll
+C:\Users\Bert\Desktop\jessedobbelaere-AmbiLight-7fd55a1\src\C#\TestCaseThreading\TestGui\bin\Debug\AmbilightThreading.pdb
+C:\Users\Bert\Desktop\jessedobbelaere-AmbiLight-7fd55a1\src\C#\TestCaseThreading\TestGui\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\Bert\Desktop\jessedobbelaere-AmbiLight-7fd55a1\src\C#\TestCaseThreading\TestGui\obj\x86\Debug\TestGui.ConnectSettings.resources
+C:\Users\Bert\Desktop\jessedobbelaere-AmbiLight-7fd55a1\src\C#\TestCaseThreading\TestGui\obj\x86\Debug\TestCaseThreading.Gui.resources
+C:\Users\Bert\Desktop\jessedobbelaere-AmbiLight-7fd55a1\src\C#\TestCaseThreading\TestGui\obj\x86\Debug\TestGui.Properties.Resources.resources
+C:\Users\Bert\Desktop\jessedobbelaere-AmbiLight-7fd55a1\src\C#\TestCaseThreading\TestGui\obj\x86\Debug\TestGui.UserControls.ArduinoUC.resources
+C:\Users\Bert\Desktop\jessedobbelaere-AmbiLight-7fd55a1\src\C#\TestCaseThreading\TestGui\obj\x86\Debug\TestGui.UserControls.ColorCycleUC.resources
+C:\Users\Bert\Desktop\jessedobbelaere-AmbiLight-7fd55a1\src\C#\TestCaseThreading\TestGui\obj\x86\Debug\TestGui.UserControls.StrobeUC.resources
+C:\Users\Bert\Desktop\jessedobbelaere-AmbiLight-7fd55a1\src\C#\TestCaseThreading\TestGui\obj\x86\Debug\GenerateResource.read.1.tlog
+C:\Users\Bert\Desktop\jessedobbelaere-AmbiLight-7fd55a1\src\C#\TestCaseThreading\TestGui\obj\x86\Debug\GenerateResource.write.1.tlog
+C:\Users\Bert\Desktop\jessedobbelaere-AmbiLight-7fd55a1\src\C#\TestCaseThreading\TestGui\obj\x86\Debug\TestGui.UserControls.RegioManueel.resources
+C:\Users\Bert\Desktop\jessedobbelaere-AmbiLight-7fd55a1\src\C#\TestCaseThreading\TestGui\obj\x86\Debug\TestGui.UserControls.SingleRegioUC.resources

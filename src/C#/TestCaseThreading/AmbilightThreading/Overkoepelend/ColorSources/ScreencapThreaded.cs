@@ -17,11 +17,12 @@ namespace TestCaseThreading.ColorSources {
         private bool running = false;
         private Thread t;
         private Size size;
-        private Rectangle[] regions = new Rectangle[2];
+        private Rectangle[] regions;
 
         //constructor
-        public ScreencapThread(SerialCom sc) {
+        public ScreencapThread(SerialCom sc, Rectangle[] regions) {
             this.serial = sc;
+            this.regions = regions;
             this.size = Screen.PrimaryScreen.Bounds.Size;
             t = new Thread(new ThreadStart(capScreen));
             t.Name = "Screen capture and analysation thread";
@@ -72,10 +73,8 @@ namespace TestCaseThreading.ColorSources {
                     return;
                 }
                 //DEBUGDEBUGDEBUG
-
-                regions[0] = new Rectangle(0, 0, bmp.Width/2, bmp.Height);
-                regions[1] = new Rectangle(bmp.Width / 2, 0, bmp.Width / 2, bmp.Height);
-                
+                int a = bmp.Height;
+                int b = bmp.Width;
                 BitmapData srcData = bmp.LockBits(new Rectangle(0, 0, bmp.Width, bmp.Height),ImageLockMode.ReadOnly,PixelFormat.Format24bppRgb);
 
                 int stride = srcData.Stride;

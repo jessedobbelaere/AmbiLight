@@ -42,8 +42,8 @@ namespace TestGui {
             string[] ports = SerialPort.GetPortNames();
             foreach(string s in ports) {
                 cb.Items.Add(s);
-            }
-            cb.SelectedIndex = 0;
+                }
+            //cb.SelectedIndex = 0;
         }
 
         /// <summary>
@@ -52,7 +52,12 @@ namespace TestGui {
         /// <param name="sender">Object that sends the event</param>
         /// <param name="e">Event arguments</param>
         private void buttonConnect_Click(object sender, EventArgs e) {
-            comPort = comboBoxComPorts.SelectedItem.ToString();
+            if (comboBoxComPorts.SelectedItem != null) {
+                comPort = comboBoxComPorts.SelectedItem.ToString();
+            } else {
+                this.DialogResult = DialogResult.Retry;
+            }
+           
             this.Close();
         }
     }

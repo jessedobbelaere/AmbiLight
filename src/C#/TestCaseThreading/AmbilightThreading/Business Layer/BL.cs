@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading;
 using TestCaseThreading.ColorSources;
 using AmbilightThreading.Data_Layer;
+using System.Drawing;
 
 namespace TestCaseThreading {
     public class BL {
@@ -62,13 +63,13 @@ namespace TestCaseThreading {
         /// Select a color source
         /// </summary>
         /// <param name="src"></param>
-        public void SetColorSource(Source src) {
+        public void SetColorSource(Source src, Rectangle[] regions) {
             switch (src) {
                 case Source.Screencap:
                     source = new Screencap(serial);
                     break;
                 case Source.ScreencapThreaded:
-                    source = new ScreencapThread(serial);
+                    source = new ScreencapThread(serial, regions);
                     break;
                 default:
                     System.Diagnostics.Debug.Print("Optie nog niet in busineslayer geimplementeerd");

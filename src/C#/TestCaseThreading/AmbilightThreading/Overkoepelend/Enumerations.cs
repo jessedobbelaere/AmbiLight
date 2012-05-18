@@ -15,7 +15,8 @@ namespace TestCaseThreading {
         Colorcycle
     }
 
-    public enum Effects {
-        EMPTY
+    public enum RegioMethodes {
+        Manueel,
+        Automatisch
     }
 }
