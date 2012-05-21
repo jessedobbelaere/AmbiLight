@@ -18,6 +18,7 @@ namespace AmbilightThreading.Data_Layer {
         private Socket s;
         private bool servRunning;
         private Thread thrListener;
+        private Thread thrReceiver;
 
         /// <summary>
         /// Constructor
@@ -54,11 +55,6 @@ namespace AmbilightThreading.Data_Layer {
                 // Start the new tread that hosts the listener
                 thrListener = new Thread(KeepListening);
                 thrListener.Start();
-
-                //s = myList.AcceptSocket();
-                //deleg.Invoke("Connection accepted from " + s.RemoteEndPoint);
-
-                //Listen();
             }
             catch (Exception e) {
                 deleg.Invoke("Error: " + e.StackTrace);
@@ -73,8 +69,8 @@ namespace AmbilightThreading.Data_Layer {
 
                 if (s.Connected) {
                     deleg.Invoke("Connection accepted from " + s.RemoteEndPoint);
-                    Thread t = new Thread(Receive);
-                    t.Start();
+                    thrReceiver = new Thread(Receive);
+                    thrReceiver.Start();
                 }
 
             }
@@ -94,12 +90,17 @@ namespace AmbilightThreading.Data_Layer {
         /// </summary>
         public void Stop() {
             if (s != null && myList != null) {
-                s.Close();
+                //s.Close(); --> makes it crash?? find solution
                 myList.Stop();
+                thrListener.Abort();
+                thrReceiver.Abort();
+                thrListener = null;
+                thrReceiver = null;
+                servRunning = false;
                 deleg("Running server is aborted");
             }
             else {
-                deleg("No server is running");
+                deleg("No server running at the moment...");
             }
         }
         

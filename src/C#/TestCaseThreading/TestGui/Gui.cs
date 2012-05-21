@@ -8,6 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using TestGui;
 using TestGui.UserControls;
+using System.Text.RegularExpressions;
 
 namespace TestCaseThreading {
     public partial class Gui : Form {
@@ -25,6 +26,7 @@ namespace TestCaseThreading {
             InitializeComponent();
 
             Opvullen(comboBoxSource, typeof(Source)); //screencap combobox
+            comboBoxSource.SelectedIndex = 1;
             Opvullen(comboBoxAMode, typeof(ArduinoModes)); //arduino modes combobox
             Opvullen(comboBoxMethode, typeof(RegioMethodes)); //select regio combobox
 
@@ -53,6 +55,47 @@ namespace TestCaseThreading {
 
             String text = "(" + DateTime.Now + ") " + s + Environment.NewLine;
             this.textBoxLog.Text += text;
+
+            checkForAction(s);
+        }
+
+        /// <summary>
+        /// Kijk of er een actie verstuurd is met de delegate
+        /// </summary>
+        /// <param name="message">Verstuurde message</param>
+        private void checkForAction(string message) {
+            if (message.StartsWith("Received message: msg:")) {
+                string msg = message.TrimEnd(new char[] { '\0' });
+                string[] action = Regex.Split(msg, "msg:");
+
+                switch (action[1]) {
+                    // Ambilight controls
+                    case "StartAmbilight":
+                        buttonStartScreen_Click(null, null); // Lets cheat a little, this wasn't called from a button... Doesn't matter!
+                        break;
+                    case "StopAmbilight":
+                        buttonStopScreen_Click(null, null);
+                        break;
+
+                    // Effects
+                    case "StartFxCycle":
+                        bl.StartFx(1);
+                        addToLog("Started the color cycle mode");
+                        break;
+                    case "StartFxStrobe":
+                        bl.StartFx(2);
+                        addToLog("Started the Strobe");
+                        break;
+                    case "StartFxPolice":
+                        bl.StartFx(3);
+                        addToLog("Started Police Light mode");
+                        break;
+                    case "StopFx":
+                        buttonModeStop_Click(null, null);
+                        break;
+                }
+
+            }
         }
 
         /// <summary>

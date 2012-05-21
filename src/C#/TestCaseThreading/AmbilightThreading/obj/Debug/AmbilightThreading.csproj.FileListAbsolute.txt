@@ -13,3 +13,8 @@ C:\Users\Bert\Desktop\jessedobbelaere-AmbiLight-7fd55a1\src\C#\TestCaseThreading
 C:\Users\Bert\Desktop\jessedobbelaere-AmbiLight-7fd55a1\src\C#\TestCaseThreading\AmbilightThreading\obj\Debug\ResolveAssemblyReference.cache
 C:\Users\Bert\Desktop\jessedobbelaere-AmbiLight-7fd55a1\src\C#\TestCaseThreading\AmbilightThreading\obj\Debug\AmbilightThreading.dll
 C:\Users\Bert\Desktop\jessedobbelaere-AmbiLight-7fd55a1\src\C#\TestCaseThreading\AmbilightThreading\obj\Debug\AmbilightThreading.pdb
+Z:\Dropbox\KAHO\2ICT\Projecten1\src\C#\TestCaseThreading\AmbilightThreading\bin\Debug\AmbilightThreading.dll
+Z:\Dropbox\KAHO\2ICT\Projecten1\src\C#\TestCaseThreading\AmbilightThreading\bin\Debug\AmbilightThreading.pdb
+Z:\Dropbox\KAHO\2ICT\Projecten1\src\C#\TestCaseThreading\AmbilightThreading\obj\Debug\ResolveAssemblyReference.cache
+Z:\Dropbox\KAHO\2ICT\Projecten1\src\C#\TestCaseThreading\AmbilightThreading\obj\Debug\AmbilightThreading.dll
+Z:\Dropbox\KAHO\2ICT\Projecten1\src\C#\TestCaseThreading\AmbilightThreading\obj\Debug\AmbilightThreading.pdb

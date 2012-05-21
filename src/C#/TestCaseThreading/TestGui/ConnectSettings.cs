@@ -43,7 +43,7 @@ namespace TestGui {
             foreach(string s in ports) {
                 cb.Items.Add(s);
                 }
-            //cb.SelectedIndex = 0;
+            cb.SelectedIndex = 0;
         }
 
         /// <summary>

@@ -88,7 +88,8 @@ namespace TestCaseThreading {
         /// Stop the source
         /// </summary>
         public void StopSource() {
-            source.Stop();
+            this.source.Stop();
+            this.serial.Send(15, 0, 0, 0);
         }
 
 

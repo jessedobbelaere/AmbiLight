@@ -300,7 +300,7 @@
             // 
             // buttonStartScreen
             // 
-            this.buttonStartScreen.Location = new System.Drawing.Point(189, 27);
+            this.buttonStartScreen.Location = new System.Drawing.Point(246, 27);
             this.buttonStartScreen.Margin = new System.Windows.Forms.Padding(2);
             this.buttonStartScreen.Name = "buttonStartScreen";
             this.buttonStartScreen.Size = new System.Drawing.Size(56, 21);
@@ -311,7 +311,7 @@
             // 
             // buttonStopScreen
             // 
-            this.buttonStopScreen.Location = new System.Drawing.Point(249, 27);
+            this.buttonStopScreen.Location = new System.Drawing.Point(306, 28);
             this.buttonStopScreen.Margin = new System.Windows.Forms.Padding(2);
             this.buttonStopScreen.Name = "buttonStopScreen";
             this.buttonStopScreen.Size = new System.Drawing.Size(56, 21);
@@ -336,7 +336,7 @@
             this.comboBoxSource.Location = new System.Drawing.Point(82, 28);
             this.comboBoxSource.Margin = new System.Windows.Forms.Padding(2);
             this.comboBoxSource.Name = "comboBoxSource";
-            this.comboBoxSource.Size = new System.Drawing.Size(92, 21);
+            this.comboBoxSource.Size = new System.Drawing.Size(147, 21);
             this.comboBoxSource.TabIndex = 5;
             // 
             // tabControl

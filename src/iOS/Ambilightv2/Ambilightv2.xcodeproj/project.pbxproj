@@ -1,0 +1,436 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		882294A7153B10AF008F8355 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 882294A6153B10AF008F8355 /* UIKit.framework */; };
+		882294A9153B10AF008F8355 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 882294A8153B10AF008F8355 /* Foundation.framework */; };
+		882294AB153B10AF008F8355 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 882294AA153B10AF008F8355 /* CoreGraphics.framework */; };
+		882294B1153B10AF008F8355 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 882294AF153B10AF008F8355 /* InfoPlist.strings */; };
+		882294B3153B10AF008F8355 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 882294B2153B10AF008F8355 /* main.m */; };
+		882294B7153B10AF008F8355 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 882294B6153B10AF008F8355 /* AppDelegate.m */; };
+		882294BA153B10AF008F8355 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 882294B8153B10AF008F8355 /* MainStoryboard.storyboard */; };
+		882294BD153B10AF008F8355 /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 882294BC153B10AF008F8355 /* FirstViewController.m */; };
+		882294C4153B10AF008F8355 /* SecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 882294C3153B10AF008F8355 /* SecondViewController.m */; };
+		882294D0153B1265008F8355 /* gear.png in Resources */ = {isa = PBXBuildFile; fileRef = 882294CE153B1265008F8355 /* gear.png */; };
+		882294D1153B1265008F8355 /* gear@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 882294CF153B1265008F8355 /* gear@2x.png */; };
+		886EC1DF156946A0008D1026 /* ColorPickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 886EC1DE156946A0008D1026 /* ColorPickerViewController.xib */; };
+		886EC1E4156946B9008D1026 /* bar_select.png in Resources */ = {isa = PBXBuildFile; fileRef = 886EC1E1156946B9008D1026 /* bar_select.png */; };
+		886EC1E5156946B9008D1026 /* colormap.png in Resources */ = {isa = PBXBuildFile; fileRef = 886EC1E2156946B9008D1026 /* colormap.png */; };
+		886EC1E6156946B9008D1026 /* crosshair.png in Resources */ = {isa = PBXBuildFile; fileRef = 886EC1E3156946B9008D1026 /* crosshair.png */; };
+		886EC1EE15694A08008D1026 /* AmbiColorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 886EC1ED15694A08008D1026 /* AmbiColorViewController.m */; };
+		886EC1FF15694D00008D1026 /* ColorPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 886EC1F315694D00008D1026 /* ColorPickerView.m */; };
+		886EC20015694D00008D1026 /* ColorPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 886EC1F515694D00008D1026 /* ColorPickerViewController.m */; };
+		886EC20115694D00008D1026 /* ColorSwatchView.m in Sources */ = {isa = PBXBuildFile; fileRef = 886EC1F715694D00008D1026 /* ColorSwatchView.m */; };
+		886EC20215694D00008D1026 /* GradientView.m in Sources */ = {isa = PBXBuildFile; fileRef = 886EC1FA15694D00008D1026 /* GradientView.m */; };
+		886EC20315694D00008D1026 /* UIColor-Expanded.m in Sources */ = {isa = PBXBuildFile; fileRef = 886EC1FC15694D00008D1026 /* UIColor-Expanded.m */; };
+		886EC20415694D00008D1026 /* UIColor-HSVAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 886EC1FE15694D00008D1026 /* UIColor-HSVAdditions.m */; };
+		886EC20915694EC3008D1026 /* ColorMatrixView.m in Sources */ = {isa = PBXBuildFile; fileRef = 886EC20615694EC3008D1026 /* ColorMatrixView.m */; };
+		886EC20A15694EC3008D1026 /* ColorPickerAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 886EC20815694EC3008D1026 /* ColorPickerAppDelegate.m */; };
+		886EC2181569682E008D1026 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 886EC2171569682E008D1026 /* icon.png */; };
+		886EC21A1569683D008D1026 /* icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 886EC2191569683D008D1026 /* icon@2x.png */; };
+		8884A7EC154BF72500D1AC04 /* ambilight.png in Resources */ = {isa = PBXBuildFile; fileRef = 8884A7EA154BF72500D1AC04 /* ambilight.png */; };
+		8884A7ED154BF72500D1AC04 /* ambilight@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8884A7EB154BF72500D1AC04 /* ambilight@2x.png */; };
+		8884A800154C118C00D1AC04 /* palette.png in Resources */ = {isa = PBXBuildFile; fileRef = 8884A7FE154C118C00D1AC04 /* palette.png */; };
+		8884A801154C118C00D1AC04 /* palette@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8884A7FF154C118C00D1AC04 /* palette@2x.png */; };
+		8884A804154C12FA00D1AC04 /* AmbiConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 8884A803154C12FA00D1AC04 /* AmbiConnection.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		882294A2153B10AF008F8355 /* KaHo Ambilight.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "KaHo Ambilight.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		882294A6153B10AF008F8355 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		882294A8153B10AF008F8355 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		882294AA153B10AF008F8355 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		882294AE153B10AF008F8355 /* Ambilightv2-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Ambilightv2-Info.plist"; sourceTree = "<group>"; };
+		882294B0153B10AF008F8355 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		882294B2153B10AF008F8355 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		882294B4153B10AF008F8355 /* Ambilightv2-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Ambilightv2-Prefix.pch"; sourceTree = "<group>"; };
+		882294B5153B10AF008F8355 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		882294B6153B10AF008F8355 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		882294B9153B10AF008F8355 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
+		882294BB153B10AF008F8355 /* FirstViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FirstViewController.h; sourceTree = "<group>"; };
+		882294BC153B10AF008F8355 /* FirstViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FirstViewController.m; sourceTree = "<group>"; };
+		882294C2153B10AF008F8355 /* SecondViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SecondViewController.h; sourceTree = "<group>"; };
+		882294C3153B10AF008F8355 /* SecondViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SecondViewController.m; sourceTree = "<group>"; };
+		882294CE153B1265008F8355 /* gear.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gear.png; sourceTree = "<group>"; };
+		882294CF153B1265008F8355 /* gear@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "gear@2x.png"; sourceTree = "<group>"; };
+		886EC1DE156946A0008D1026 /* ColorPickerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ColorPickerViewController.xib; sourceTree = "<group>"; };
+		886EC1E1156946B9008D1026 /* bar_select.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bar_select.png; sourceTree = "<group>"; };
+		886EC1E2156946B9008D1026 /* colormap.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = colormap.png; sourceTree = "<group>"; };
+		886EC1E3156946B9008D1026 /* crosshair.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = crosshair.png; sourceTree = "<group>"; };
+		886EC1EC15694A08008D1026 /* AmbiColorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AmbiColorViewController.h; sourceTree = "<group>"; };
+		886EC1ED15694A08008D1026 /* AmbiColorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AmbiColorViewController.m; sourceTree = "<group>"; };
+		886EC1F215694D00008D1026 /* ColorPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ColorPickerView.h; sourceTree = "<group>"; };
+		886EC1F315694D00008D1026 /* ColorPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ColorPickerView.m; sourceTree = "<group>"; };
+		886EC1F415694D00008D1026 /* ColorPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ColorPickerViewController.h; sourceTree = "<group>"; };
+		886EC1F515694D00008D1026 /* ColorPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ColorPickerViewController.m; sourceTree = "<group>"; };
+		886EC1F615694D00008D1026 /* ColorSwatchView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ColorSwatchView.h; sourceTree = "<group>"; };
+		886EC1F715694D00008D1026 /* ColorSwatchView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ColorSwatchView.m; sourceTree = "<group>"; };
+		886EC1F815694D00008D1026 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
+		886EC1F915694D00008D1026 /* GradientView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GradientView.h; sourceTree = "<group>"; };
+		886EC1FA15694D00008D1026 /* GradientView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GradientView.m; sourceTree = "<group>"; };
+		886EC1FB15694D00008D1026 /* UIColor-Expanded.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor-Expanded.h"; sourceTree = "<group>"; };
+		886EC1FC15694D00008D1026 /* UIColor-Expanded.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor-Expanded.m"; sourceTree = "<group>"; };
+		886EC1FD15694D00008D1026 /* UIColor-HSVAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor-HSVAdditions.h"; sourceTree = "<group>"; };
+		886EC1FE15694D00008D1026 /* UIColor-HSVAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor-HSVAdditions.m"; sourceTree = "<group>"; };
+		886EC20515694EC3008D1026 /* ColorMatrixView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ColorMatrixView.h; sourceTree = "<group>"; };
+		886EC20615694EC3008D1026 /* ColorMatrixView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ColorMatrixView.m; sourceTree = "<group>"; };
+		886EC20715694EC3008D1026 /* ColorPickerAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ColorPickerAppDelegate.h; sourceTree = "<group>"; };
+		886EC20815694EC3008D1026 /* ColorPickerAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ColorPickerAppDelegate.m; sourceTree = "<group>"; };
+		886EC2171569682E008D1026 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon.png; path = ../icon.png; sourceTree = "<group>"; };
+		886EC2191569683D008D1026 /* icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon@2x.png"; path = "../icon@2x.png"; sourceTree = "<group>"; };
+		8884A7EA154BF72500D1AC04 /* ambilight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ambilight.png; sourceTree = "<group>"; };
+		8884A7EB154BF72500D1AC04 /* ambilight@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ambilight@2x.png"; sourceTree = "<group>"; };
+		8884A7FE154C118C00D1AC04 /* palette.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = palette.png; sourceTree = "<group>"; };
+		8884A7FF154C118C00D1AC04 /* palette@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "palette@2x.png"; sourceTree = "<group>"; };
+		8884A802154C12FA00D1AC04 /* AmbiConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AmbiConnection.h; sourceTree = "<group>"; };
+		8884A803154C12FA00D1AC04 /* AmbiConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AmbiConnection.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		8822949F153B10AF008F8355 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				882294A7153B10AF008F8355 /* UIKit.framework in Frameworks */,
+				882294A9153B10AF008F8355 /* Foundation.framework in Frameworks */,
+				882294AB153B10AF008F8355 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		88229497153B10AF008F8355 = {
+			isa = PBXGroup;
+			children = (
+				882294AC153B10AF008F8355 /* Ambilightv2 */,
+				882294A5153B10AF008F8355 /* Frameworks */,
+				882294A3153B10AF008F8355 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		882294A3153B10AF008F8355 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				882294A2153B10AF008F8355 /* KaHo Ambilight.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		882294A5153B10AF008F8355 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				882294A6153B10AF008F8355 /* UIKit.framework */,
+				882294A8153B10AF008F8355 /* Foundation.framework */,
+				882294AA153B10AF008F8355 /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		882294AC153B10AF008F8355 /* Ambilightv2 */ = {
+			isa = PBXGroup;
+			children = (
+				886EC1F015694A8D008D1026 /* Images */,
+				886EC1EF15694A76008D1026 /* Color Picker */,
+				882294B5153B10AF008F8355 /* AppDelegate.h */,
+				882294B6153B10AF008F8355 /* AppDelegate.m */,
+				882294B8153B10AF008F8355 /* MainStoryboard.storyboard */,
+				886EC1EC15694A08008D1026 /* AmbiColorViewController.h */,
+				886EC1ED15694A08008D1026 /* AmbiColorViewController.m */,
+				882294BB153B10AF008F8355 /* FirstViewController.h */,
+				882294BC153B10AF008F8355 /* FirstViewController.m */,
+				882294C2153B10AF008F8355 /* SecondViewController.h */,
+				882294C3153B10AF008F8355 /* SecondViewController.m */,
+				882294AD153B10AF008F8355 /* Supporting Files */,
+				8884A802154C12FA00D1AC04 /* AmbiConnection.h */,
+				8884A803154C12FA00D1AC04 /* AmbiConnection.m */,
+			);
+			path = Ambilightv2;
+			sourceTree = "<group>";
+		};
+		882294AD153B10AF008F8355 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				882294AE153B10AF008F8355 /* Ambilightv2-Info.plist */,
+				882294AF153B10AF008F8355 /* InfoPlist.strings */,
+				882294B2153B10AF008F8355 /* main.m */,
+				882294B4153B10AF008F8355 /* Ambilightv2-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		886EC1E0156946B9008D1026 /* UI Parts */ = {
+			isa = PBXGroup;
+			children = (
+				886EC1E1156946B9008D1026 /* bar_select.png */,
+				886EC1E2156946B9008D1026 /* colormap.png */,
+				886EC1E3156946B9008D1026 /* crosshair.png */,
+			);
+			path = "UI Parts";
+			sourceTree = "<group>";
+		};
+		886EC1EF15694A76008D1026 /* Color Picker */ = {
+			isa = PBXGroup;
+			children = (
+				886EC1F115694D00008D1026 /* Classes */,
+				886EC1DE156946A0008D1026 /* ColorPickerViewController.xib */,
+				886EC1E0156946B9008D1026 /* UI Parts */,
+			);
+			name = "Color Picker";
+			sourceTree = "<group>";
+		};
+		886EC1F015694A8D008D1026 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				886EC2191569683D008D1026 /* icon@2x.png */,
+				886EC2171569682E008D1026 /* icon.png */,
+				882294CE153B1265008F8355 /* gear.png */,
+				882294CF153B1265008F8355 /* gear@2x.png */,
+				8884A7EA154BF72500D1AC04 /* ambilight.png */,
+				8884A7EB154BF72500D1AC04 /* ambilight@2x.png */,
+				8884A7FE154C118C00D1AC04 /* palette.png */,
+				8884A7FF154C118C00D1AC04 /* palette@2x.png */,
+			);
+			name = Images;
+			sourceTree = "<group>";
+		};
+		886EC1F115694D00008D1026 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				886EC20515694EC3008D1026 /* ColorMatrixView.h */,
+				886EC20615694EC3008D1026 /* ColorMatrixView.m */,
+				886EC20715694EC3008D1026 /* ColorPickerAppDelegate.h */,
+				886EC20815694EC3008D1026 /* ColorPickerAppDelegate.m */,
+				886EC1F215694D00008D1026 /* ColorPickerView.h */,
+				886EC1F315694D00008D1026 /* ColorPickerView.m */,
+				886EC1F415694D00008D1026 /* ColorPickerViewController.h */,
+				886EC1F515694D00008D1026 /* ColorPickerViewController.m */,
+				886EC1F615694D00008D1026 /* ColorSwatchView.h */,
+				886EC1F715694D00008D1026 /* ColorSwatchView.m */,
+				886EC1F815694D00008D1026 /* Constants.h */,
+				886EC1F915694D00008D1026 /* GradientView.h */,
+				886EC1FA15694D00008D1026 /* GradientView.m */,
+				886EC1FB15694D00008D1026 /* UIColor-Expanded.h */,
+				886EC1FC15694D00008D1026 /* UIColor-Expanded.m */,
+				886EC1FD15694D00008D1026 /* UIColor-HSVAdditions.h */,
+				886EC1FE15694D00008D1026 /* UIColor-HSVAdditions.m */,
+			);
+			name = Classes;
+			path = "Classes kopie";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		882294A1153B10AF008F8355 /* Ambilightv2 */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 882294CB153B10AF008F8355 /* Build configuration list for PBXNativeTarget "Ambilightv2" */;
+			buildPhases = (
+				8822949E153B10AF008F8355 /* Sources */,
+				8822949F153B10AF008F8355 /* Frameworks */,
+				882294A0153B10AF008F8355 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Ambilightv2;
+			productName = Ambilightv2;
+			productReference = 882294A2153B10AF008F8355 /* KaHo Ambilight.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		88229499153B10AF008F8355 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0430;
+				ORGANIZATIONNAME = "Dobbelaere Auto-Elektriciteit";
+			};
+			buildConfigurationList = 8822949C153B10AF008F8355 /* Build configuration list for PBXProject "Ambilightv2" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 88229497153B10AF008F8355;
+			productRefGroup = 882294A3153B10AF008F8355 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				882294A1153B10AF008F8355 /* Ambilightv2 */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		882294A0153B10AF008F8355 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				882294B1153B10AF008F8355 /* InfoPlist.strings in Resources */,
+				882294BA153B10AF008F8355 /* MainStoryboard.storyboard in Resources */,
+				882294D0153B1265008F8355 /* gear.png in Resources */,
+				882294D1153B1265008F8355 /* gear@2x.png in Resources */,
+				8884A7EC154BF72500D1AC04 /* ambilight.png in Resources */,
+				8884A7ED154BF72500D1AC04 /* ambilight@2x.png in Resources */,
+				8884A800154C118C00D1AC04 /* palette.png in Resources */,
+				8884A801154C118C00D1AC04 /* palette@2x.png in Resources */,
+				886EC1DF156946A0008D1026 /* ColorPickerViewController.xib in Resources */,
+				886EC1E4156946B9008D1026 /* bar_select.png in Resources */,
+				886EC1E5156946B9008D1026 /* colormap.png in Resources */,
+				886EC1E6156946B9008D1026 /* crosshair.png in Resources */,
+				886EC2181569682E008D1026 /* icon.png in Resources */,
+				886EC21A1569683D008D1026 /* icon@2x.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		8822949E153B10AF008F8355 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				882294B3153B10AF008F8355 /* main.m in Sources */,
+				882294B7153B10AF008F8355 /* AppDelegate.m in Sources */,
+				882294BD153B10AF008F8355 /* FirstViewController.m in Sources */,
+				882294C4153B10AF008F8355 /* SecondViewController.m in Sources */,
+				8884A804154C12FA00D1AC04 /* AmbiConnection.m in Sources */,
+				886EC1EE15694A08008D1026 /* AmbiColorViewController.m in Sources */,
+				886EC1FF15694D00008D1026 /* ColorPickerView.m in Sources */,
+				886EC20015694D00008D1026 /* ColorPickerViewController.m in Sources */,
+				886EC20115694D00008D1026 /* ColorSwatchView.m in Sources */,
+				886EC20215694D00008D1026 /* GradientView.m in Sources */,
+				886EC20315694D00008D1026 /* UIColor-Expanded.m in Sources */,
+				886EC20415694D00008D1026 /* UIColor-HSVAdditions.m in Sources */,
+				886EC20915694EC3008D1026 /* ColorMatrixView.m in Sources */,
+				886EC20A15694EC3008D1026 /* ColorPickerAppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		882294AF153B10AF008F8355 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				882294B0153B10AF008F8355 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		882294B8153B10AF008F8355 /* MainStoryboard.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				882294B9153B10AF008F8355 /* en */,
+			);
+			name = MainStoryboard.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		882294C9153B10AF008F8355 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		882294CA153B10AF008F8355 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		882294CC153B10AF008F8355 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Ambilightv2/Ambilightv2-Prefix.pch";
+				INFOPLIST_FILE = "Ambilightv2/Ambilightv2-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				PRODUCT_NAME = "KaHo Ambilight";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		882294CD153B10AF008F8355 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Ambilightv2/Ambilightv2-Prefix.pch";
+				INFOPLIST_FILE = "Ambilightv2/Ambilightv2-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				PRODUCT_NAME = "KaHo Ambilight";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		8822949C153B10AF008F8355 /* Build configuration list for PBXProject "Ambilightv2" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				882294C9153B10AF008F8355 /* Debug */,
+				882294CA153B10AF008F8355 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		882294CB153B10AF008F8355 /* Build configuration list for PBXNativeTarget "Ambilightv2" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				882294CC153B10AF008F8355 /* Debug */,
+				882294CD153B10AF008F8355 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 88229499153B10AF008F8355 /* Project object */;
+}
