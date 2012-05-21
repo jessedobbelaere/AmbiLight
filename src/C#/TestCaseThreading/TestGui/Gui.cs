@@ -64,10 +64,20 @@ namespace TestCaseThreading {
         /// </summary>
         /// <param name="message">Verstuurde message</param>
         private void checkForAction(string message) {
+
             if (message.StartsWith("Received message: msg:")) {
                 string msg = message.TrimEnd(new char[] { '\0' });
                 string[] action = Regex.Split(msg, "msg:");
 
+                if(action[1].StartsWith("rgb:")){
+                    string[] splitt = Regex.Split(action[1], "rgb:");
+                    string[] rgb = Regex.Split(splitt[1], ",");
+                    byte rood = byte.Parse(rgb[0]);
+                    byte groen = byte.Parse(rgb[1]);
+                    byte blauw = byte.Parse(rgb[2]);
+                    bl.StartFx(15,0,new byte[]{rood,groen,blauw});
+                    System.Diagnostics.Debug.Print(rood.ToString() +  groen.ToString() + blauw.ToString());
+                }
                 switch (action[1]) {
                     // Ambilight controls
                     case "StartAmbilight":
@@ -180,6 +190,7 @@ namespace TestCaseThreading {
             }
             else {
                 ShowErrorMessage("Please connect to a serial port before starting. Use File > Connect from the menu");
+                ShowConnectDialog();
             }
         }
 
@@ -235,6 +246,7 @@ namespace TestCaseThreading {
             }
             else {
                 ShowErrorMessage("Please connect to a serial port before starting. Use File > Connect from the menu");
+                ShowConnectDialog();
             }
         }
 
@@ -263,6 +275,7 @@ namespace TestCaseThreading {
             }
             else {
                 ShowErrorMessage("Please connect to a serial port before starting. Use File > Connect from the menu");
+                ShowConnectDialog();
             }
         }
 
@@ -277,6 +290,7 @@ namespace TestCaseThreading {
             }
             else {
                 ShowErrorMessage("Please connect to a serial port before starting. Use File > Connect from the menu");
+                ShowConnectDialog();
             }
         }
 

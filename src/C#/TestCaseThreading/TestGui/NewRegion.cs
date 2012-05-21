@@ -130,7 +130,7 @@ namespace TestGui {
         public void key_press(object sender, KeyEventArgs e)
         {
 
-            if (e.KeyCode.ToString() == "S" && (RectangleDrawn && (CursorPosition() == CursPos.WithinSelectionArea || CursorPosition() == CursPos.OutsideSelectionArea)))
+            if ((e.KeyCode.ToString() == "S" || e.KeyCode== Keys.Enter )&& (RectangleDrawn && (CursorPosition() == CursPos.WithinSelectionArea || CursorPosition() == CursPos.OutsideSelectionArea)))
             {
 
                 SaveSelection(true);

@@ -67,7 +67,7 @@ namespace AmbilightThreading.Data_Layer {
                 // Accept a pending connection
                 s = myList.AcceptSocket();
 
-                if (s.Connected) {
+                if (s.Connected && SocketConnected(s)) {
                     deleg.Invoke("Connection accepted from " + s.RemoteEndPoint);
                     thrReceiver = new Thread(Receive);
                     thrReceiver.Start();
@@ -77,14 +77,29 @@ namespace AmbilightThreading.Data_Layer {
         }
 
         private void Receive() {
-            while (s.Connected) {
+            while (s.Connected && SocketConnected(s)) {
                 byte[] bytes = new byte[256];
                 int i = s.Receive(bytes);
                 string message = Encoding.UTF8.GetString(bytes);
+                if (message == "\0") {
+                    s.Disconnect(true);
+                    deleg.Invoke("Connection closed: ");
+                }
                 deleg.Invoke("Received message: " + message);
             }
         }
 
+        private bool SocketConnected(Socket s) {
+            bool part1 = s.Poll(1000, SelectMode.SelectRead);
+            bool part2 = (s.Available == 0);
+            if (part1 && part2) {
+                deleg.Invoke("Connection lost");
+                return false;
+            }
+            else {
+                return true;
+            }
+        }
         /// <summary>
         /// Stop the server
         /// </summary>

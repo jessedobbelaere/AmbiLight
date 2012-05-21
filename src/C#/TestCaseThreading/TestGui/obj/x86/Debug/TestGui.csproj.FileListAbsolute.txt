@@ -59,3 +59,6 @@ Z:\Dropbox\KAHO\2ICT\Projecten1\src\C#\TestCaseThreading\TestGui\obj\x86\Debug\T
 Z:\Dropbox\KAHO\2ICT\Projecten1\src\C#\TestCaseThreading\TestGui\obj\x86\Debug\TestGui.UserControls.StrobeUC.resources
 Z:\Dropbox\KAHO\2ICT\Projecten1\src\C#\TestCaseThreading\TestGui\obj\x86\Debug\GenerateResource.read.1.tlog
 Z:\Dropbox\KAHO\2ICT\Projecten1\src\C#\TestCaseThreading\TestGui\obj\x86\Debug\GenerateResource.write.1.tlog
+C:\Users\Michael\Dropbox\school\Projecten 1\AmbiLight\src\C#\TestCaseThreading\TestGui\obj\x86\Debug\TestGui.UserControls.RegioManueel.resources
+C:\Users\Michael\Dropbox\school\Projecten 1\AmbiLight\src\C#\TestCaseThreading\TestGui\obj\x86\Debug\TestGui.UserControls.SingleRegioUC.resources
+C:\Users\Michael\Dropbox\school\Projecten 1\AmbiLight\src\C#\TestCaseThreading\TestGui\obj\x86\Debug\TestGui.NewRegion.resources

@@ -12,3 +12,5 @@ C:\Users\Michael\Dropbox\school\Projecten 1\AmbiLight\src\TestcaseSerialCom\bin\
 C:\Users\Michael\Dropbox\school\Projecten 1\AmbiLight\src\TestcaseSerialCom\bin\Debug\RgbLedLibrary.dll
 C:\Users\Michael\Dropbox\school\Projecten 1\AmbiLight\src\TestcaseSerialCom\bin\Debug\RgbLedLibrary.pdb
 C:\Users\Michael\Dropbox\school\Projecten 1\AmbiLight\src\TestcaseSerialCom\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\Michael\Dropbox\school\Projecten 1\AmbiLight\src\C#\TestcaseSerialCom\obj\x86\Debug\TestcaseSerialCom.exe
+C:\Users\Michael\Dropbox\school\Projecten 1\AmbiLight\src\C#\TestcaseSerialCom\obj\x86\Debug\TestcaseSerialCom.pdb

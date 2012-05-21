@@ -103,6 +103,15 @@ void setAll(int red, int green, int blue)
   Tlc.set(5, red*16);
   Tlc.set(4, green*16);
   Tlc.set(6, blue*16);
+  
+  Tlc.set(8, red*16);
+  Tlc.set(7, green*16);
+  Tlc.set(9, blue*16);
+
+  Tlc.set(11, red*16);
+  Tlc.set(10, green*16);
+  Tlc.set(12, blue*16);
+
 
   Tlc.update();
 }
