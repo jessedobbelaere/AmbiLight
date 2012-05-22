@@ -9,11 +9,55 @@ using System.Windows.Forms;
 
 namespace TestGui.UserControls {
     public partial class SingleRegioUC : UserControl {
-        public int x;
-        public int y;
-        public int width;
-        public int height;
-        
+        private int x;
+        private int y;
+        private int width;
+        private int height;
+
+        public int X {
+            get {
+                return this.x;
+            }
+            set {
+                this.x = value;
+                this.textBox1x.Text = this.x.ToString();
+            }
+        }
+
+        public int Y {
+            get {
+                return this.y;
+            }
+            set {
+                this.y = value;
+                this.textBox1y.Text = this.y.ToString();
+            }
+        }
+
+        public int Breedte {
+            get {
+                return this.width;
+            }
+            set {
+                this.width = value;
+                this.textBox2x.Text = this.width.ToString();
+            }
+        }
+
+        public int Hoogte {
+            get {
+                return this.height;
+            }
+            set {
+                this.height = value;
+                this.textBox2y.Text = this.height.ToString();
+            }
+        }
+
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="label"></param>
         public SingleRegioUC(int label) {
             InitializeComponent();
             this.labelTitle.Text = "Ledstrip " + label;

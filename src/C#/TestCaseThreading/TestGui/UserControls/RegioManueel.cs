@@ -6,6 +6,8 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using System.IO;
+using System.Xml.Serialization;
 
 namespace TestGui.UserControls {
     public partial class RegioManueel : RegiosUC {
@@ -15,20 +17,23 @@ namespace TestGui.UserControls {
             InitializeComponent();
             ambilightRegions = new List<SingleRegioUC>();
             
-            // een eerste regio
-            ambilightRegions.Add(new SingleRegioUC(ambilightRegions.Count));
-            this.Controls.Add(ambilightRegions[0]);
-            this.buttonAdd.Location = new Point(233, (ambilightRegions.Count * ambilightRegions[0].Height) + 10);
+            GetXmlData();
+            ReplaceUC();
+
         }
 
+        /// <summary>
+        /// Get regio's
+        /// </summary>
+        /// <returns>Regio's</returns>
         public override Rectangle[] GetRegions() {
             Rectangle[] regions = new Rectangle[ambilightRegions.Count];
 
             for (int i = 0; i < ambilightRegions.Count; i++) {
-                int x = ambilightRegions[i].x;
-                int y = ambilightRegions[i].y;
-                int width = ambilightRegions[i].width;
-                int height = ambilightRegions[i].height;
+                int x = ambilightRegions[i].X;
+                int y = ambilightRegions[i].Y;
+                int width = ambilightRegions[i].Breedte;
+                int height = ambilightRegions[i].Hoogte;
 
                 regions[i] = new Rectangle(x, y, width, height);
             }
@@ -37,7 +42,7 @@ namespace TestGui.UserControls {
         }
 
         /// <summary>
-        /// Toevoegen van een singleRegioUC
+        /// Add new singleRegioUC
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -45,7 +50,7 @@ namespace TestGui.UserControls {
             ambilightRegions.Add(new SingleRegioUC(ambilightRegions.Count));
             this.Controls.Add(ambilightRegions[ambilightRegions.Count - 1]);
             ReplaceUC();
-            this.buttonAdd.Location = new Point(233, (ambilightRegions.Count * ambilightRegions[0].Height) + 10);
+            
             this.Height += ambilightRegions[0].Height;
         }
 
@@ -57,6 +62,65 @@ namespace TestGui.UserControls {
             foreach (SingleRegioUC ambiLightRegion in ambilightRegions) {
                 ambiLightRegion.Location = new Point(0, y);
                 y += ambiLightRegion.Height;
+            }
+
+            this.buttonAdd.Location = new Point(27, (ambilightRegions.Count * ambilightRegions[0].Height) + 10);
+            this.buttonOpslaan.Location = new Point(130, (ambilightRegions.Count * ambilightRegions[0].Height) + 10);
+            this.buttonReset.Location = new Point(233, (ambilightRegions.Count * ambilightRegions[0].Height) + 10);
+        }
+        
+        /// <summary>
+        /// Reset regio's
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void buttonReset_Click(object sender, EventArgs e) {
+            foreach (SingleRegioUC ambiLightRegion in ambilightRegions) {
+                this.Controls.Remove(ambiLightRegion);
+            }
+            this.Height = 83;
+            ambilightRegions = new List<SingleRegioUC>();           
+
+            ambilightRegions.Add(new SingleRegioUC(ambilightRegions.Count));
+            this.Controls.Add(ambilightRegions[0]);
+
+            ReplaceUC();
+        }
+
+        /// <summary>
+        /// Save regio's to xml file
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void buttonOpslaan_Click(object sender, EventArgs e) {
+            Rectangle[] regions = this.GetRegions();
+
+            using (FileStream bestand = File.Open(@".\test.xml", FileMode.Create)) {
+                XmlSerializer serializer = new XmlSerializer(regions.GetType());
+                serializer.Serialize(bestand, regions);
+            }
+        }
+
+        /// <summary>
+        /// Get regio data from xml file
+        /// </summary>
+        private void GetXmlData() {
+            Rectangle[] regions = new Rectangle[0];
+
+            using (FileStream bestand = File.Open(@".\test.xml", FileMode.Open)) {
+                XmlSerializer serializer = new XmlSerializer(regions.GetType());
+                regions = (Rectangle[])serializer.Deserialize(bestand);
+            }
+
+            foreach (Rectangle regio in regions) {
+                SingleRegioUC regioUC = new SingleRegioUC(ambilightRegions.Count);
+                regioUC.X = regio.X;
+                regioUC.Y = regio.Y;
+                regioUC.Breedte = regio.Width;
+                regioUC.Hoogte = regio.Height;
+                this.Controls.Add(regioUC);
+                this.Height += regioUC.Height;
+                ambilightRegions.Add(regioUC);
             }
         }
 
