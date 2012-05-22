@@ -138,6 +138,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="UserControls\RegioAutomatisch.resx">
+      <DependentUpon>RegioAutomatisch.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UserControls\RegioManueel.resx">
       <DependentUpon>RegioManueel.cs</DependentUpon>
     </EmbeddedResource>
