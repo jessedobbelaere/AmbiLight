@@ -34,9 +34,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="AmbilightThreading">
-      <HintPath>..\AmbilightThreading\bin\Debug\AmbilightThreading.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -123,6 +120,12 @@
     <Compile Include="UserControls\RegiosUC.Designer.cs">
       <DependentUpon>RegiosUC.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\SingleColorUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\SingleColorUC.Designer.cs">
+      <DependentUpon>SingleColorUC.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="ConnectSettings.resx">
       <DependentUpon>ConnectSettings.cs</DependentUpon>
     </EmbeddedResource>
@@ -143,6 +146,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\RegioManueel.resx">
       <DependentUpon>RegioManueel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\SingleColorUC.resx">
+      <DependentUpon>SingleColorUC.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\SingleRegioUC.resx">
       <DependentUpon>SingleRegioUC.cs</DependentUpon>
@@ -165,6 +171,12 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\AmbilightThreading\AmbilightThreading.csproj">
+      <Project>{BD054CDA-FB80-4603-B593-4316F906DDD9}</Project>
+      <Name>AmbilightThreading</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -162,6 +162,11 @@ namespace TestCaseThreading {
                     modeconfigUC = new PoliceUC();
                     this.groupBoxAModeConfig.Controls.Add(modeconfigUC);
                     break;
+                case ArduinoModes.SingelColor:
+                    this.groupBoxAModeConfig.Controls.Clear();
+                    modeconfigUC = new SingleColorUC();
+                    this.groupBoxAModeConfig.Controls.Add(modeconfigUC);
+                    break;
             }
         }
 
@@ -182,6 +187,10 @@ namespace TestCaseThreading {
                     case ArduinoModes.PoliceLight:
                         bl.StartFx(3);
                         addToLog("Started Police Light mode");
+                        break;
+                    case ArduinoModes.SingelColor:
+                        bl.StartFx(15, 0, modeconfigUC.Bytes);
+                        addToLog("Started Single Color Mode");
                         break;
                     default:
                         System.Diagnostics.Debug.Print("Something went awfuly wrong with the Arduino Mode dropdown. Are you a magician?");

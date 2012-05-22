@@ -16,3 +16,4 @@ C:\AmbiLight\src\C#\TestCaseThreading\TestGui\bin\Release\AmbilightThreading.pdb
 C:\AmbiLight\src\C#\TestCaseThreading\TestGui\obj\x86\Release\TestGui.exe
 C:\AmbiLight\src\C#\TestCaseThreading\TestGui\obj\x86\Release\TestGui.pdb
 C:\AmbiLight\src\C#\TestCaseThreading\TestGui\obj\x86\Release\TestGui.UserControls.RegioAutomatisch.resources
+C:\AmbiLight\src\C#\TestCaseThreading\TestGui\obj\x86\Release\TestGui.UserControls.SingleColorUC.resources

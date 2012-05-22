@@ -12,6 +12,7 @@ namespace TestCaseThreading {
     public enum ArduinoModes {
         Strobe,
         PoliceLight,
+        SingelColor, 
         Colorcycle
     }
 

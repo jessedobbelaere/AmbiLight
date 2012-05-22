@@ -8,8 +8,9 @@ using System.Text;
 using System.Windows.Forms;
 
 namespace TestGui.UserControls {
+    
     /// <summary>
-    /// Basis UserControl voor arduino mode instellingen waar alle anderen van overerven
+    /// Basic UserControl for arduino mode settings
     /// </summary>
     public partial class ArduinoUC : UserControl {
         private byte options;
