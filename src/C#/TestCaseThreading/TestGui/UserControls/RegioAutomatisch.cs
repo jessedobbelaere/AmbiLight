@@ -9,15 +9,37 @@ using System.Windows.Forms;
 
 namespace TestGui.UserControls {
     public partial class RegioAutomatisch : RegiosUC {
+        
         public RegioAutomatisch() {
             InitializeComponent();
             this.Height += 50;
         }
 
+        /// <summary>
+        /// Get the regions
+        /// </summary>
+        /// <returns></returns>
         public override Rectangle[] GetRegions() {
-            Rectangle[] regions = new Rectangle[2];
+            int links = (int)numericUpDownLinks.Value;
+            int midden = (int)numericUpDownMidden.Value;
+            int rechts = (int)numericUpDownRechts.Value;
 
-            // automatisch bepalen van regio's via resolutie en ingave aantal ledstrips links, boven en rechts
+            Rectangle resolution = Screen.PrimaryScreen.Bounds;
+            
+            Rectangle[] regions = new Rectangle[links + midden + rechts];
+
+            for (int i = 0; i < links; i++) {
+                regions[i] = new Rectangle(resolution.X, (resolution.Height / links) * (links - (i + 1) ) , resolution.Width / 2, resolution.Height / links);
+            }
+
+            for (int i = links; i < midden + links; i++) {
+                regions[i] = new Rectangle((resolution.Width / midden) * (i - links), resolution.Y, resolution.Width / midden, resolution.Height / 2);
+            }
+
+            for (int i = midden + links; i < rechts + midden + links; i++) {
+                regions[i] = new Rectangle(resolution.Width / 2, (resolution.Height / rechts) * (i - midden - links), resolution.Width / 2, resolution.Height / rechts);
+            }
+            
 
             return regions;
         }

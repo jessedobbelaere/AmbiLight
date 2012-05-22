@@ -129,9 +129,6 @@
     <EmbeddedResource Include="Gui.resx">
       <DependentUpon>Gui.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="NewRegion.resx">
-      <DependentUpon>NewRegion.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -141,6 +138,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="UserControls\RegioAutomatisch.resx">
+      <DependentUpon>RegioAutomatisch.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UserControls\RegioManueel.resx">
       <DependentUpon>RegioManueel.cs</DependentUpon>
     </EmbeddedResource>

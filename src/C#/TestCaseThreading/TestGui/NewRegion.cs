@@ -66,11 +66,9 @@ namespace TestGui {
         Pen EraserPen = new Pen(Color.FromArgb(255, 255, 192), 1);
         SolidBrush eraserBrush = new SolidBrush(Color.FromArgb(255, 255, 192));
 
-        protected override void OnMouseClick(MouseEventArgs e)
-        {
+        protected override void OnMouseClick(MouseEventArgs e) {
 
-            if (e.Button == MouseButtons.Right)
-            {
+            if (e.Button == MouseButtons.Right) {
 
                 e = null;
 
@@ -127,10 +125,9 @@ namespace TestGui {
 
 
 
-        public void key_press(object sender, KeyEventArgs e)
-        {
+        public void key_press(object sender, KeyEventArgs e) {
 
-            if ((e.KeyCode.ToString() == "S" || e.KeyCode== Keys.Enter )&& (RectangleDrawn && (CursorPosition() == CursPos.WithinSelectionArea || CursorPosition() == CursPos.OutsideSelectionArea)))
+            if ((e.KeyCode.ToString() == "S" || e.KeyCode == Keys.Enter )&& (RectangleDrawn && (CursorPosition() == CursPos.WithinSelectionArea || CursorPosition() == CursPos.OutsideSelectionArea)))
             {
 
                 SaveSelection(true);

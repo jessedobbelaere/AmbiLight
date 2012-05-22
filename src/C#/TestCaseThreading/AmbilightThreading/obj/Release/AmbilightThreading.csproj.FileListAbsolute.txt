@@ -1,0 +1,7 @@
+C:\AmbiLight\src\C#\TestCaseThreading\AmbilightThreading\bin\Release\AmbilightThreading.dll
+C:\AmbiLight\src\C#\TestCaseThreading\AmbilightThreading\bin\Release\AmbilightThreading.pdb
+C:\AmbiLight\src\C#\TestCaseThreading\AmbilightThreading\obj\Release\ResolveAssemblyReference.cache
+C:\AmbiLight\src\C#\TestCaseThreading\AmbilightThreading\obj\Release\AmbilightThreading.dll
+C:\AmbiLight\src\C#\TestCaseThreading\AmbilightThreading\obj\Release\AmbilightThreading.pdb
+C:\AmbiLight\src\C#\TestCaseThreading\AmbilightThreading\bin\Release\AForge.Imaging.dll
+C:\AmbiLight\src\C#\TestCaseThreading\AmbilightThreading\bin\Release\AForge.Imaging.xml
