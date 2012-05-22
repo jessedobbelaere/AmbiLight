@@ -14,6 +14,7 @@
     NSString *ipAdres;
 }
 
+// Properties
 @property (nonatomic, strong) NSString *ipAdres;
 
 
@@ -23,6 +24,7 @@
 // Methoden
 - (void) initNetworkCommunication;
 - (BOOL) openConnection;
+- (void) closeConnection;
 - (BOOL) isConnected;
 - (void) sendMessage:(NSString *) message;
 

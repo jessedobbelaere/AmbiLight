@@ -12,7 +12,6 @@
 @interface FirstViewController : UIViewController
 
 // Properties
-
 @property (weak, nonatomic) IBOutlet UIButton *StartButton;
 @property (weak, nonatomic) IBOutlet UIButton *StopButton;
 @property (weak, nonatomic) IBOutlet UILabel *ErrorLabel;

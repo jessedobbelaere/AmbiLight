@@ -81,7 +81,7 @@
         CGFloat green   = _components[1];
         CGFloat blue    = _components[2];
         
-        NSString *rgbMessage = [NSString stringWithFormat:@"red%dgreen%dblue%d", (int)(red*255),(int)(green*255),(int)(blue*255)];
+        NSString *rgbMessage = [NSString stringWithFormat:@"rgb:%d,%d,%d", (int)(red*255),(int)(green*255),(int)(blue*255)];
         NSLog(@"%@", rgbMessage);
         AmbiConnection *ambiConnection = [AmbiConnection sharedConnection];
         [ambiConnection sendMessage:rgbMessage];

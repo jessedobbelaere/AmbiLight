@@ -3,7 +3,7 @@
 //  Ambilightv2
 //
 //  Created by Jesse Dobbelaere on 15/04/12.
-//  Copyright (c) 2012 Dobbelaere Auto-Elektriciteit. All rights reserved.
+//  Copyright (c) 2012. All rights reserved.
 //
 
 #import "SecondViewController.h"
@@ -21,6 +21,7 @@
 @synthesize errorLabel;
 @synthesize connectButton;
 
+// View has loaded
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -28,6 +29,7 @@
     
     NSLog(@"Settings geladen");        
 }
+
 
 - (void)viewDidUnload
 {
@@ -43,6 +45,8 @@
     return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
 }
 
+
+// The connect button is pressed 
 -(IBAction)ConnectPressed:(id)sender {    
     [ipAdresInput resignFirstResponder]; // Hide the keyboard
     
@@ -62,9 +66,11 @@
     
 }
 
+// Hide the keyboard when return button is pressed
 -(IBAction)textFieldReturn:(id)sender {
     [sender resignFirstResponder];
 }
+
 
 -(IBAction)backgroundTouched:(id)sender {
     [ipAdresInput resignFirstResponder];

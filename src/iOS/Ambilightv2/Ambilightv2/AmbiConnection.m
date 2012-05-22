@@ -63,6 +63,18 @@ static AmbiConnection *sharedConnection = nil;
     return YES;
 }
 
+// Close the connection
+- (void) closeConnection {
+    @try {
+        [inputStream close];
+        [outputStream close];
+    }
+    @catch (NSException *e) {
+        
+    }
+}
+
+// Is the iphone connected to the server?
 - (BOOL) isConnected {
     if(inputStream && outputStream) {
         return YES;

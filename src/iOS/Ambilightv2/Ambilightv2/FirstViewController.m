@@ -3,7 +3,7 @@
 //  Ambilightv2
 //
 //  Created by Jesse Dobbelaere on 15/04/12.
-//  Copyright (c) 2012 Dobbelaere Auto-Elektriciteit. All rights reserved.
+//  Copyright (c) 2012. All rights reserved.
 //
 
 #import "FirstViewController.h"
@@ -20,6 +20,8 @@
 @synthesize SegmentFxBtn;
 @synthesize StopFxBtn;
 
+
+// Code executed when view is loaded
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -30,6 +32,7 @@
     
 }
 
+// Code executed when view is unloaded
 - (void)viewDidUnload
 {
     [self setStopButton:nil];
@@ -41,11 +44,11 @@
     // Release any retained subviews of the main view.
 }
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
     return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
 }
 
+// Action Start Ambilight
 - (IBAction)StartAmbilight:(id)sender {
     NSLog(@"Start de Ambilight...");
     
@@ -60,6 +63,7 @@
     }
 }
 
+// Action Stop Ambilight
 - (IBAction)StopAmbilight:(id)sender { 
     NSLog(@"Stop Ambilight");
     
@@ -74,6 +78,7 @@
     }
 }
 
+// Action Start Effects
 - (IBAction)startFx:(id)sender {
     AmbiConnection *ambiConnection = [AmbiConnection sharedConnection];
     
@@ -89,6 +94,7 @@
     
 }
 
+// Action stop the effects
 - (IBAction)stopFx:(id)sender {
     [SegmentFxBtn setSelectedSegmentIndex:UISegmentedControlNoSegment];
     AmbiConnection *ambiConnection = [AmbiConnection sharedConnection];
