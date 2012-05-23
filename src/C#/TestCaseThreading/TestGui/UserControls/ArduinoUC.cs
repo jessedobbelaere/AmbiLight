@@ -16,6 +16,9 @@ namespace TestGui.UserControls {
         private byte options;
         private byte[] bytes;
 
+        /// <summary>
+        /// Property for the options
+        /// </summary>
         public byte Options{
             get{
                 return options;
@@ -24,6 +27,10 @@ namespace TestGui.UserControls {
                 options = value;
             }
         }
+
+        /// <summary>
+        /// Property for the bytes
+        /// </summary>
         public byte[] Bytes {
             get {
                 return bytes;
@@ -33,6 +40,9 @@ namespace TestGui.UserControls {
             }
         }
 
+        /// <summary>
+        /// Default constructor
+        /// </summary>
         public ArduinoUC() {
             InitializeComponent();
         }

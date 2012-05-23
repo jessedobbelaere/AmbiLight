@@ -11,6 +11,10 @@ using TestGui.UserControls;
 using System.Text.RegularExpressions;
 
 namespace TestCaseThreading {
+   
+    /// <summary>
+    /// The Ambilight App GUI
+    /// </summary>
     public partial class Gui : Form {
         
         // Variables
@@ -25,24 +29,24 @@ namespace TestCaseThreading {
         public Gui() {
             InitializeComponent();
 
-            Opvullen(comboBoxSource, typeof(Source)); //screencap combobox
+            FillCombobox(comboBoxSource, typeof(Source)); //screencap combobox
             comboBoxSource.SelectedIndex = 1;
-            Opvullen(comboBoxAMode, typeof(ArduinoModes)); //arduino modes combobox
-            Opvullen(comboBoxMethode, typeof(RegioMethodes)); //select regio combobox
+            FillCombobox(comboBoxAMode, typeof(ArduinoModes)); //arduino modes combobox
+            FillCombobox(comboBoxMethode, typeof(RegioMethodes)); //select regio combobox
 
             deleg = new UpdateLogDelegate(addToLog);
             deleg("Application started");
 
-            //aanmaken businesslayer
+            // make business layer object
             bl = new BL(deleg);                   
         }
 
         #region GUI code
 
         /// <summary>
-        /// Lijn toevoegen aan log
+        /// Add line to log
         /// </summary>
-        /// <param name="s">String met text voor log</param>
+        /// <param name="s">String with text for the log</param>
         private void addToLog(string s) {
 
             if (textBoxLog.InvokeRequired) {
@@ -52,7 +56,6 @@ namespace TestCaseThreading {
                 return; 
             }
 
-
             String text = "(" + DateTime.Now + ") " + s + Environment.NewLine;
             this.textBoxLog.Text += text;
 
@@ -60,9 +63,9 @@ namespace TestCaseThreading {
         }
 
         /// <summary>
-        /// Kijk of er een actie verstuurd is met de delegate
+        /// Check if an action was sent within the delegate message
         /// </summary>
-        /// <param name="message">Verstuurde message</param>
+        /// <param name="message">The sent message</param>
         private void checkForAction(string message) {
 
             if (message.StartsWith("Received message: msg:")) {
@@ -109,11 +112,11 @@ namespace TestCaseThreading {
         }
 
         /// <summary>
-        /// Vult een combobox met meegegeven items
+        /// Fill a combobox with enum items
         /// </summary>
-        /// <param name="cb">Op te vullen ComboBox</param>
-        /// <param name="enumeratieType">type enum</param>
-        private void Opvullen(ComboBox cb, Type enumeratieType) {
+        /// <param name="cb">Combobox to fill</param>
+        /// <param name="enumeratieType">Enum with items</param>
+        private void FillCombobox(ComboBox cb, Type enumeratieType) {
             foreach (string name in Enum.GetNames(enumeratieType)) {
                 if (name != "NN") {
                     cb.Items.Add(name);
@@ -123,7 +126,7 @@ namespace TestCaseThreading {
         }
 
         /// <summary>
-        /// Opent het comport connectie venster
+        /// Open the connectionsettings popup
         /// </summary>
         private void ShowConnectDialog(){
             ConnectSettings connectsettings = new ConnectSettings();
@@ -136,15 +139,19 @@ namespace TestCaseThreading {
             }
         }
 
+        /// <summary>
+        /// Show an error message
+        /// </summary>
+        /// <param name="s">The error message string</param>
         private void ShowErrorMessage(string s) {
             MessageBox.Show(s, "Foutmelding", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         /// <summary>
-        /// Laadt nieuwe usercontrol in wanneer mode veranderd word in de combobox
+        /// Load a new usercontrol each time a new mode is chosen in the combobox
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">The object that raised the event</param>
+        /// <param name="e">Event args</param>
         private void updateAModeConfigUC(object sender, EventArgs e) {
             switch ((ArduinoModes)Enum.Parse(typeof(ArduinoModes), this.comboBoxAMode.SelectedItem.ToString())) {
                 case ArduinoModes.Colorcycle:
@@ -172,10 +179,14 @@ namespace TestCaseThreading {
 
         #endregion
 
+        /// <summary>
+        /// Start the ambilight effects
+        /// </summary>
+        /// <param name="sender">The object that raised the event</param>
+        /// <param name="e">The event args</param>
         private void buttonModeStartClick(object sender, EventArgs e) {
             if (bl.SerialWorks) {
                 switch ((ArduinoModes)Enum.Parse(typeof(ArduinoModes), this.comboBoxAMode.SelectedItem.ToString())) {
-                    //TODO: hier options en bytes meegeven v instellingen user controls
                     case ArduinoModes.Colorcycle:
                         bl.StartFx(1);
                         addToLog("Started the color cycle mode");
@@ -203,6 +214,11 @@ namespace TestCaseThreading {
             }
         }
 
+        /// <summary>
+        /// Stop the Ambilight effects
+        /// </summary>
+        /// <param name="sender">The object that raised the event</param>
+        /// <param name="e">Event args</param>
         private void buttonModeStop_Click(object sender, EventArgs e) {
             if (bl.SerialWorks) {
                 bl.StopFX();
@@ -260,7 +276,6 @@ namespace TestCaseThreading {
         }
 
         
-
         /// <summary>
         /// Stop the screen observation
         /// </summary>
@@ -303,6 +318,11 @@ namespace TestCaseThreading {
             }
         }
 
+        /// <summary>
+        /// Combobox index changed
+        /// </summary>
+        /// <param name="sender">The object that raised the event</param>
+        /// <param name="e">Event args</param>
         private void comboBoxMethode_SelectedIndexChanged(object sender, EventArgs e) {
             switch ((RegioMethodes)Enum.Parse(typeof(RegioMethodes), this.comboBoxMethode.SelectedItem.ToString())) {
                 case RegioMethodes.Manueel:

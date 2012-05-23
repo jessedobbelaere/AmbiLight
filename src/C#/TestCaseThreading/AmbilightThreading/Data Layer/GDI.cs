@@ -5,7 +5,11 @@ using System.Text;
 using System.Runtime.InteropServices;
 
 namespace AmbilightThreading.Data_Layer {
-    class GDI {
+    
+    /// <summary>
+    /// GDI class for drawing regions
+    /// </summary>
+    internal class GDI {
 
         [DllImport("gdi32.dll")]
         public static extern bool BitBlt(

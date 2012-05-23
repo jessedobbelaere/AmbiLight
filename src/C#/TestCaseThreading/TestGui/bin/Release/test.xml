@@ -2,16 +2,30 @@
 <ArrayOfRectangle xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <Rectangle>
     <Location>
-      <X>0</X>
-      <Y>0</Y>
+      <X>502</X>
+      <Y>518</Y>
     </Location>
     <Size>
-      <Width>0</Width>
-      <Height>0</Height>
+      <Width>370</Width>
+      <Height>260</Height>
     </Size>
-    <X>0</X>
-    <Y>0</Y>
-    <Width>0</Width>
-    <Height>0</Height>
+    <X>502</X>
+    <Y>518</Y>
+    <Width>370</Width>
+    <Height>260</Height>
+  </Rectangle>
+  <Rectangle>
+    <Location>
+      <X>943</X>
+      <Y>518</Y>
+    </Location>
+    <Size>
+      <Width>368</Width>
+      <Height>262</Height>
+    </Size>
+    <X>943</X>
+    <Y>518</Y>
+    <Width>368</Width>
+    <Height>262</Height>
   </Rectangle>
 </ArrayOfRectangle>

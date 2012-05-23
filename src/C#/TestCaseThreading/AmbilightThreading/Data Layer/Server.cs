@@ -9,6 +9,10 @@ using System.Threading;
 using System.IO;
 
 namespace AmbilightThreading.Data_Layer {
+    
+    /// <summary>
+    /// The server class. Listens/Receives messages sent over TCP/IP
+    /// </summary>
     internal class Server {
 
         // Variables
@@ -21,7 +25,7 @@ namespace AmbilightThreading.Data_Layer {
         private Thread thrReceiver;
 
         /// <summary>
-        /// Constructor
+        /// Default Constructor
         /// </summary>
         public Server() {
             // Get ip address and initialize the tcp listener on port 8001
@@ -30,7 +34,7 @@ namespace AmbilightThreading.Data_Layer {
         }
 
         /// <summary>
-        /// Constructor for the delegate
+        /// Non-Default Constructor for the delegate
         /// </summary>
         /// <param name="deleg">Delegate that updates the log</param>
         public Server(UpdateLogDelegate deleg) : this() {
@@ -61,6 +65,9 @@ namespace AmbilightThreading.Data_Layer {
             }   
         }
 
+        /// <summary>
+        /// Keep listening for incoming connections
+        /// </summary>
         private void KeepListening() {
             // While the server is running
             while (servRunning == true) {
@@ -76,6 +83,9 @@ namespace AmbilightThreading.Data_Layer {
             }
         }
 
+        /// <summary>
+        /// Listen to the connection for received messages
+        /// </summary>
         private void Receive() {
             while (s.Connected && SocketConnected(s)) {
                 byte[] bytes = new byte[256];
@@ -89,6 +99,11 @@ namespace AmbilightThreading.Data_Layer {
             }
         }
 
+        /// <summary>
+        /// Is socket still connected?
+        /// </summary>
+        /// <param name="s">The socket</param>
+        /// <returns>Socket connected or not</returns>
         private bool SocketConnected(Socket s) {
             bool part1 = s.Poll(1000, SelectMode.SelectRead);
             bool part2 = (s.Available == 0);
@@ -100,12 +115,13 @@ namespace AmbilightThreading.Data_Layer {
                 return true;
             }
         }
+
         /// <summary>
         /// Stop the server
         /// </summary>
         public void Stop() {
             if (s != null && myList != null) {
-                //s.Close(); --> makes it crash?? find solution
+                //s.Close(); --> makes it crash??
                 myList.Stop();
                 thrListener.Abort();
                 thrReceiver.Abort();
@@ -119,8 +135,9 @@ namespace AmbilightThreading.Data_Layer {
             }
         }
         
+
         /// <summary>
-        /// Get the local ip address
+        /// Get the local ip address of this machine
         /// </summary>
         /// <returns>IP Address</returns>
         public string GetLocalIP() {

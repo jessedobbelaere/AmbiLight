@@ -5,7 +5,11 @@ using System.Text;
 using System.IO.Ports;
 
 namespace TestCaseThreading {
-    class SerialCom {
+    
+    /// <summary>
+    /// The serial communication class
+    /// </summary>
+    internal class SerialCom {
 
         // Variables
         private SerialPort port;
@@ -28,7 +32,7 @@ namespace TestCaseThreading {
         }
 
         /// <summary>
-        /// Constructor
+        /// Non-Default Constructor
         /// </summary>
         /// <param name="comport">The COM port</param>
         /// <param name="baudrate">The Baudrate</param>
@@ -41,7 +45,7 @@ namespace TestCaseThreading {
         }
 
         /// <summary>
-        /// Constructor
+        /// Non-Default Constructor
         /// </summary>
         /// <param name="comport">The COM port</param>
         /// <param name="baudrate">The Baudrate</param>
@@ -72,6 +76,8 @@ namespace TestCaseThreading {
             
             port.DiscardOutBuffer();
         }
+
+
         /// <summary>
         /// Function to set arduino in a mode
         /// </summary>

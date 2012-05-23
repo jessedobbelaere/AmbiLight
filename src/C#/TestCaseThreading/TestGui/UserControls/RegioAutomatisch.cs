@@ -8,8 +8,15 @@ using System.Text;
 using System.Windows.Forms;
 
 namespace TestGui.UserControls {
+    
+    /// <summary>
+    /// the Automatic region user control
+    /// </summary>
     public partial class RegioAutomatisch : RegiosUC {
         
+        /// <summary>
+        /// Default constructor
+        /// </summary>
         public RegioAutomatisch() {
             InitializeComponent();
             this.Height += 50;
@@ -18,7 +25,7 @@ namespace TestGui.UserControls {
         /// <summary>
         /// Get the regions
         /// </summary>
-        /// <returns></returns>
+        /// <returns>The regions rectangle</returns>
         public override Rectangle[] GetRegions() {
             int links = (int)numericUpDownLinks.Value;
             int midden = (int)numericUpDownMidden.Value;

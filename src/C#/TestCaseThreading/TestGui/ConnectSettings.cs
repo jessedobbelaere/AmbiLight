@@ -9,6 +9,10 @@ using System.Windows.Forms;
 using System.IO.Ports;
 
 namespace TestGui {
+    
+    /// <summary>
+    /// The Connectsettings popup
+    /// </summary>
     public partial class ConnectSettings : Form {
         
         // Variables

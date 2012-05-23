@@ -8,6 +8,10 @@ using AmbilightThreading.Data_Layer;
 using System.Drawing;
 
 namespace TestCaseThreading {
+    
+    /// <summary>
+    /// Business layer for Ambilight app
+    /// </summary>
     public class BL {
 
         // Variables
@@ -18,6 +22,9 @@ namespace TestCaseThreading {
         private UpdateLogDelegate deleg;
         private Thread startServerThread;
 
+        /// <summary>
+        /// Property for SerialWorks
+        /// </summary>
         public bool SerialWorks {
             get {
                 return serialWorks;
@@ -25,20 +32,17 @@ namespace TestCaseThreading {
         }
 
         /// <summary>
-        /// Constructor
-        /// </summary>
-        public BL() {}
-
-        /// <summary>
-        /// Constructor
+        /// Non-default Constructor
         /// </summary>
         /// <param name="deleg">A delegate to update a log</param>
         public BL(UpdateLogDelegate deleg) {
             this.deleg = deleg;
         }
 
-
-
+        /// <summary>
+        /// Connect to a serial port
+        /// </summary>
+        /// <param name="comPort">The COM port</param>
         public void SetSerial(string comPort){
             try{
                 this.serial = new SerialCom(comPort, 19200, deleg);
@@ -50,6 +54,8 @@ namespace TestCaseThreading {
                 System.Diagnostics.Debug.Print(e.ToString());
             }
         }
+
+
         /// <summary>
         /// Disconnect the serial connection
         /// </summary>
@@ -62,7 +68,8 @@ namespace TestCaseThreading {
         /// <summary>
         /// Select a color source
         /// </summary>
-        /// <param name="src"></param>
+        /// <param name="src">The Color Source</param>
+        /// <param name="regions">Rectangle array of regions</param>
         public void SetColorSource(Source src, Rectangle[] regions) {
             switch (src) {
                 case Source.Screencap:
@@ -93,13 +100,18 @@ namespace TestCaseThreading {
         }
 
 
-
+        /// <summary>
+        /// Start the Server
+        /// </summary>
         public void StartServer() {
             server = new Server(deleg);
             startServerThread = new Thread(new ThreadStart(server.Start));
             startServerThread.Start();
         }
 
+        /// <summary>
+        /// Stop the server
+        /// </summary>
         public void StopServer() {
             startServerThread.Abort();
             server.Stop();
@@ -109,16 +121,33 @@ namespace TestCaseThreading {
         /// <summary>
         /// Start an effect
         /// </summary>
+        /// <param name="mode">The mode byte</param>
         public void StartFx(byte mode) {
             this.serial.Send(mode, 0, 0, 0, 0);
         }
+
+        /// <summary>
+        /// Start an effect
+        /// </summary>
+        /// <param name="mode">The mode byte</param>
+        /// <param name="options">The options byte</param>
         public void StartFx(byte mode, byte options) {
             this.serial.Send(mode,options,0,0,0);
         }
+
+        /// <summary>
+        /// Start an effect
+        /// </summary>
+        /// <param name="mode">The mode byte</param>
+        /// <param name="options">The options byte</param>
+        /// <param name="bytes">The data bytes</param>
         public void StartFx(byte mode, byte options, byte[] bytes) {
             this.serial.Send(mode, options, bytes);
         }
 
+        /// <summary>
+        /// Stop an effect
+        /// </summary>
         public void StopFX() {
             this.serial.Send(15, 0, 0, 0);
         }

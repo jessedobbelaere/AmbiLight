@@ -10,22 +10,30 @@ using System.IO;
 using System.Xml.Serialization;
 
 namespace TestGui.UserControls {
+    
+    /// <summary>
+    /// The manual region usercontrol
+    /// </summary>
     public partial class RegioManueel : RegiosUC {
+        
+        // Variables
         public List<SingleRegioUC> ambilightRegions;
 
+        /// <summary>
+        /// The default-constructor
+        /// </summary>
         public RegioManueel() {
             InitializeComponent();
             ambilightRegions = new List<SingleRegioUC>();
             
             GetXmlData();
             ReplaceUC();
-
         }
 
         /// <summary>
-        /// Get regio's
+        /// Get the regions
         /// </summary>
-        /// <returns>Regio's</returns>
+        /// <returns>Regions rectangle</returns>
         public override Rectangle[] GetRegions() {
             Rectangle[] regions = new Rectangle[ambilightRegions.Count];
 
@@ -44,8 +52,8 @@ namespace TestGui.UserControls {
         /// <summary>
         /// Add new singleRegioUC
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">The object that raised the event</param>
+        /// <param name="e">Event args</param>
         private void buttonAdd_Click(object sender, EventArgs e) {
             ambilightRegions.Add(new SingleRegioUC(ambilightRegions.Count));
             this.Controls.Add(ambilightRegions[ambilightRegions.Count - 1]);
@@ -55,7 +63,7 @@ namespace TestGui.UserControls {
         }
 
         /// <summary>
-        /// Verplaatsen van singelRegioUC's 
+        /// Replace the single region Usercontrols
         /// </summary>
         private void ReplaceUC() {
             int y = 0;
@@ -72,8 +80,8 @@ namespace TestGui.UserControls {
         /// <summary>
         /// Reset regio's
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">The object that raised the event</param>
+        /// <param name="e">Event args</param>
         private void buttonReset_Click(object sender, EventArgs e) {
             foreach (SingleRegioUC ambiLightRegion in ambilightRegions) {
                 this.Controls.Remove(ambiLightRegion);
@@ -90,8 +98,8 @@ namespace TestGui.UserControls {
         /// <summary>
         /// Save regio's to xml file
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">The object that raised the event</param>
+        /// <param name="e">Event args</param>
         private void buttonOpslaan_Click(object sender, EventArgs e) {
             Rectangle[] regions = this.GetRegions();
 

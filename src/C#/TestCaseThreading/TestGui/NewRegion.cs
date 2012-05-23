@@ -10,10 +10,12 @@ using TestCaseThreading;
 
 namespace TestGui {
     public partial class NewRegion : Form {
-         #region:::::::::::::::::::::::::::::::::::::::::::Form level declarations:::::::::::::::::::::::::::::::::::::::::::
+        #region Form level declarations
 
-        public enum CursPos : int
-        {
+        /// <summary>
+        /// The Cursor position enum
+        /// </summary>
+        public enum CursPos : int {
 
             WithinSelectionArea = 0,
             OutsideSelectionArea,
@@ -28,9 +30,10 @@ namespace TestGui {
 
         }
 
-        public enum ClickAction : int
-        {
-
+        /// <summary>
+        /// The ClickAction enum
+        /// </summary>
+        public enum ClickAction : int {
             NoClick = 0,
             Dragging,
             Outside,
@@ -96,11 +99,12 @@ namespace TestGui {
         }
 
         #endregion
-
-        #region:::::::::::::::::::::::::::::::::::::::::::Mouse Event Handlers & Drawing Initialization:::::::::::::::::::::::::::::::::::::::::::
-        public NewRegion(NewSection AddNewSection)
-        {
-
+      
+        /// <summary>
+        /// Non-Default constructor
+        /// </summary>
+        /// <param name="AddNewSection">The new section</param>
+        public NewRegion(NewSection AddNewSection) {
             InitializeComponent();
             this.MouseDown += new MouseEventHandler(mouse_Click);
             this.MouseDoubleClick += new MouseEventHandler(mouse_DClick);
@@ -110,191 +114,155 @@ namespace TestGui {
             g = this.CreateGraphics();
 
             this.AddNewSection = AddNewSection;
-
         }
-        #endregion
 
-
-
-        public void SaveSelection(bool showCursor)
-        {
-                      
+        /// <summary>
+        /// Save the selection
+        /// </summary>
+        /// <param name="showCursor">Show the cursor yes/no</param>
+        public void SaveSelection(bool showCursor) {       
             AddNewSection(CurrentTopLeft.X, CurrentTopLeft.Y, CurrentBottomRight.X - CurrentTopLeft.X, CurrentBottomRight.Y - CurrentTopLeft.Y);
             this.Close();
         }
 
-
-
+        /// <summary>
+        /// Key was pressed event
+        /// </summary>
+        /// <param name="sender">Object that raised the event</param>
+        /// <param name="e">Event args</param>
         public void key_press(object sender, KeyEventArgs e) {
-
-            if ((e.KeyCode.ToString() == "S" || e.KeyCode == Keys.Enter )&& (RectangleDrawn && (CursorPosition() == CursPos.WithinSelectionArea || CursorPosition() == CursPos.OutsideSelectionArea)))
-            {
-
+            if ((e.KeyCode.ToString() == "S" || e.KeyCode == Keys.Enter )&& (RectangleDrawn && (CursorPosition() == CursPos.WithinSelectionArea || CursorPosition() == CursPos.OutsideSelectionArea))) {
                 SaveSelection(true);
-
             }
-
         }
 
-        #region:::::::::::::::::::::::::::::::::::::::::::Mouse Buttons:::::::::::::::::::::::::::::::::::::::::::
-        private void mouse_DClick(object sender, MouseEventArgs e)
-        {
-
-            if (RectangleDrawn && (CursorPosition() == CursPos.WithinSelectionArea || CursorPosition() == CursPos.OutsideSelectionArea))
-            {
-
+        #region Mouse Button Actions
+        
+        /// <summary>
+        /// Mouse dubbelclick event
+        /// </summary>
+        /// <param name="sender">Object that raised the event</param>
+        /// <param name="e">Event args</param>
+        private void mouse_DClick(object sender, MouseEventArgs e) {
+            if (RectangleDrawn && (CursorPosition() == CursPos.WithinSelectionArea || CursorPosition() == CursPos.OutsideSelectionArea)) {
                 SaveSelection(false);
-
             }
-
         }
 
-        private void mouse_Click(object sender, MouseEventArgs e)
-        {
-
-            if (e.Button == MouseButtons.Left)
-            {
-
+        /// <summary>
+        /// Mouse click event, draw a region
+        /// </summary>
+        /// <param name="sender">Object that raised the event</param>
+        /// <param name="e">Event args</param>
+        private void mouse_Click(object sender, MouseEventArgs e) {
+            if (e.Button == MouseButtons.Left) {
                 SetClickAction();
                 LeftButtonDown = true;
                 ClickPoint = new Point(System.Windows.Forms.Control.MousePosition.X, System.Windows.Forms.Control.MousePosition.Y);
 
-                if (RectangleDrawn)
-                {
-
+                if (RectangleDrawn) {
                     RectangleHeight = CurrentBottomRight.Y - CurrentTopLeft.Y;
                     RectangleWidth = CurrentBottomRight.X - CurrentTopLeft.X;
                     DragClickRelative.X = Cursor.Position.X - CurrentTopLeft.X;
                     DragClickRelative.Y = Cursor.Position.Y - CurrentTopLeft.Y;
-
                 }
 
             }
         }
 
-        private void mouse_Up(object sender, MouseEventArgs e)
-        {
-
+        /// <summary>
+        /// Mouse button released
+        /// </summary>
+        /// <param name="sender">Object that raised the event</param>
+        /// <param name="e">Event args</param>
+        private void mouse_Up(object sender, MouseEventArgs e) {
             RectangleDrawn = true;
             LeftButtonDown = false;
             CurrentAction = ClickAction.NoClick;
-
         }
+
         #endregion
 
 
+        /// <summary>
+        /// Mouse moved
+        /// </summary>
+        /// <param name="sender">Object that raised the event</param>
+        /// <param name="e">Event args</param>
+        private void mouse_Move(object sender, MouseEventArgs e) {
 
-        private void mouse_Move(object sender, MouseEventArgs e)
-        {
-
-            if (LeftButtonDown && !RectangleDrawn)
-            {
-
+            if (LeftButtonDown && !RectangleDrawn) {
                 DrawSelection();
-
             }
 
-            if (RectangleDrawn)
-            {
-
+            if (RectangleDrawn) {
                 CursorPosition();
 
-                if (CurrentAction == ClickAction.Dragging)
-                {
-
+                if (CurrentAction == ClickAction.Dragging) {
                     DragSelection();
-
                 }
 
-                if (CurrentAction != ClickAction.Dragging && CurrentAction != ClickAction.Outside)
-                {
-
+                if (CurrentAction != ClickAction.Dragging && CurrentAction != ClickAction.Outside) {
                     ResizeSelection();
-
                 }
 
             }
 
         }
 
-
-
-        private CursPos CursorPosition()
-        {
-            if (((Cursor.Position.X > CurrentTopLeft.X - 10 && Cursor.Position.X < CurrentTopLeft.X + 10)) && ((Cursor.Position.Y > CurrentTopLeft.Y + 10) && (Cursor.Position.Y < CurrentBottomRight.Y - 10)))
-            {
-
+        /// <summary>
+        /// Get Cursor position
+        /// </summary>
+        /// <returns>The Cursorposition</returns>
+        private CursPos CursorPosition() {
+            if (((Cursor.Position.X > CurrentTopLeft.X - 10 && Cursor.Position.X < CurrentTopLeft.X + 10)) && ((Cursor.Position.Y > CurrentTopLeft.Y + 10) && (Cursor.Position.Y < CurrentBottomRight.Y - 10))) {
                 this.Cursor = Cursors.SizeWE;
                 return CursPos.LeftLine;
-
             }
-            if (((Cursor.Position.X >= CurrentTopLeft.X - 10 && Cursor.Position.X <= CurrentTopLeft.X + 10)) && ((Cursor.Position.Y >= CurrentTopLeft.Y - 10) && (Cursor.Position.Y <= CurrentTopLeft.Y + 10)))
-            {
-
+            if (((Cursor.Position.X >= CurrentTopLeft.X - 10 && Cursor.Position.X <= CurrentTopLeft.X + 10)) && ((Cursor.Position.Y >= CurrentTopLeft.Y - 10) && (Cursor.Position.Y <= CurrentTopLeft.Y + 10))) {
                 this.Cursor = Cursors.SizeNWSE;
                 return CursPos.TopLeft;
-
             }
-            if (((Cursor.Position.X >= CurrentTopLeft.X - 10 && Cursor.Position.X <= CurrentTopLeft.X + 10)) && ((Cursor.Position.Y >= CurrentBottomRight.Y - 10) && (Cursor.Position.Y <= CurrentBottomRight.Y + 10)))
-            {
-
+            if (((Cursor.Position.X >= CurrentTopLeft.X - 10 && Cursor.Position.X <= CurrentTopLeft.X + 10)) && ((Cursor.Position.Y >= CurrentBottomRight.Y - 10) && (Cursor.Position.Y <= CurrentBottomRight.Y + 10))) {
                 this.Cursor = Cursors.SizeNESW;
                 return CursPos.BottomLeft;
-
             }
-            if (((Cursor.Position.X > CurrentBottomRight.X - 10 && Cursor.Position.X < CurrentBottomRight.X + 10)) && ((Cursor.Position.Y > CurrentTopLeft.Y + 10) && (Cursor.Position.Y < CurrentBottomRight.Y - 10)))
-            {
-
+            if (((Cursor.Position.X > CurrentBottomRight.X - 10 && Cursor.Position.X < CurrentBottomRight.X + 10)) && ((Cursor.Position.Y > CurrentTopLeft.Y + 10) && (Cursor.Position.Y < CurrentBottomRight.Y - 10))) {
                 this.Cursor = Cursors.SizeWE;
                 return CursPos.RightLine;
-
             }
-            if (((Cursor.Position.X >= CurrentBottomRight.X - 10 && Cursor.Position.X <= CurrentBottomRight.X + 10)) && ((Cursor.Position.Y >= CurrentTopLeft.Y - 10) && (Cursor.Position.Y <= CurrentTopLeft.Y + 10)))
-            {
-
+            if (((Cursor.Position.X >= CurrentBottomRight.X - 10 && Cursor.Position.X <= CurrentBottomRight.X + 10)) && ((Cursor.Position.Y >= CurrentTopLeft.Y - 10) && (Cursor.Position.Y <= CurrentTopLeft.Y + 10))) {
                 this.Cursor = Cursors.SizeNESW;
                 return CursPos.TopRight;
-
             }
-            if (((Cursor.Position.X >= CurrentBottomRight.X - 10 && Cursor.Position.X <= CurrentBottomRight.X + 10)) && ((Cursor.Position.Y >= CurrentBottomRight.Y - 10) && (Cursor.Position.Y <= CurrentBottomRight.Y + 10)))
-            {
-
+            if (((Cursor.Position.X >= CurrentBottomRight.X - 10 && Cursor.Position.X <= CurrentBottomRight.X + 10)) && ((Cursor.Position.Y >= CurrentBottomRight.Y - 10) && (Cursor.Position.Y <= CurrentBottomRight.Y + 10))) {
                 this.Cursor = Cursors.SizeNWSE;
                 return CursPos.BottomRight;
-
             }
-            if (((Cursor.Position.Y > CurrentTopLeft.Y - 10) && (Cursor.Position.Y < CurrentTopLeft.Y + 10)) && ((Cursor.Position.X > CurrentTopLeft.X + 10 && Cursor.Position.X < CurrentBottomRight.X - 10)))
-            {
-
+            if (((Cursor.Position.Y > CurrentTopLeft.Y - 10) && (Cursor.Position.Y < CurrentTopLeft.Y + 10)) && ((Cursor.Position.X > CurrentTopLeft.X + 10 && Cursor.Position.X < CurrentBottomRight.X - 10))) {
                 this.Cursor = Cursors.SizeNS;
                 return CursPos.TopLine;
-
             }
-            if (((Cursor.Position.Y > CurrentBottomRight.Y - 10) && (Cursor.Position.Y < CurrentBottomRight.Y + 10)) && ((Cursor.Position.X > CurrentTopLeft.X + 10 && Cursor.Position.X < CurrentBottomRight.X - 10)))
-            {
-
+            if (((Cursor.Position.Y > CurrentBottomRight.Y - 10) && (Cursor.Position.Y < CurrentBottomRight.Y + 10)) && ((Cursor.Position.X > CurrentTopLeft.X + 10 && Cursor.Position.X < CurrentBottomRight.X - 10))) {
                 this.Cursor = Cursors.SizeNS;
                 return CursPos.BottomLine;
-
             }
             if (
-                (Cursor.Position.X >= CurrentTopLeft.X + 10 && Cursor.Position.X <= CurrentBottomRight.X - 10) && (Cursor.Position.Y >= CurrentTopLeft.Y + 10 && Cursor.Position.Y <= CurrentBottomRight.Y - 10))
-            {
-
+                (Cursor.Position.X >= CurrentTopLeft.X + 10 && Cursor.Position.X <= CurrentBottomRight.X - 10) && (Cursor.Position.Y >= CurrentTopLeft.Y + 10 && Cursor.Position.Y <= CurrentBottomRight.Y - 10)) {
                 this.Cursor = Cursors.Hand;
                 return CursPos.WithinSelectionArea;
-
             }
 
             this.Cursor = Cursors.No;
             return CursPos.OutsideSelectionArea;
         }
 
-        private void SetClickAction()
-        {
+        /// <summary>
+        /// Set the click action
+        /// </summary>
+        private void SetClickAction() {
 
-            switch (CursorPosition())
-            {
+            switch (CursorPosition()) {
                 case CursPos.BottomLine:
                     CurrentAction = ClickAction.BottomSizing;
                     break;
@@ -329,14 +297,14 @@ namespace TestGui {
 
         }
 
-        private void ResizeSelection()
-        {
+        /// <summary>
+        /// Resize the selection
+        /// </summary>
+        private void ResizeSelection() {
 
-            if (CurrentAction == ClickAction.LeftSizing)
-            {
+            if (CurrentAction == ClickAction.LeftSizing) {
 
-                if (Cursor.Position.X < CurrentBottomRight.X - 10)
-                {
+                if (Cursor.Position.X < CurrentBottomRight.X - 10) {
 
                     //Erase the previous rectangle
                     g.DrawRectangle(EraserPen, CurrentTopLeft.X, CurrentTopLeft.Y, RectangleWidth, RectangleHeight);
@@ -347,11 +315,10 @@ namespace TestGui {
                 }
 
             }
-            if (CurrentAction == ClickAction.TopLeftSizing)
-            {
 
-                if (Cursor.Position.X < CurrentBottomRight.X - 10 && Cursor.Position.Y < CurrentBottomRight.Y - 10)
-                {
+            if (CurrentAction == ClickAction.TopLeftSizing) {
+
+                if (Cursor.Position.X < CurrentBottomRight.X - 10 && Cursor.Position.Y < CurrentBottomRight.Y - 10) {
 
                     //Erase the previous rectangle
                     g.DrawRectangle(EraserPen, CurrentTopLeft.X, CurrentTopLeft.Y, RectangleWidth, RectangleHeight);
@@ -363,11 +330,10 @@ namespace TestGui {
 
                 }
             }
-            if (CurrentAction == ClickAction.BottomLeftSizing)
-            {
 
-                if (Cursor.Position.X < CurrentBottomRight.X - 10 && Cursor.Position.Y > CurrentTopLeft.Y + 10)
-                {
+            if (CurrentAction == ClickAction.BottomLeftSizing) {
+
+                if (Cursor.Position.X < CurrentBottomRight.X - 10 && Cursor.Position.Y > CurrentTopLeft.Y + 10) {
 
                     //Erase the previous rectangle
                     g.DrawRectangle(EraserPen, CurrentTopLeft.X, CurrentTopLeft.Y, RectangleWidth, RectangleHeight);
@@ -380,11 +346,10 @@ namespace TestGui {
                 }
 
             }
-            if (CurrentAction == ClickAction.RightSizing)
-            {
 
-                if (Cursor.Position.X > CurrentTopLeft.X + 10)
-                {
+            if (CurrentAction == ClickAction.RightSizing) {
+
+                if (Cursor.Position.X > CurrentTopLeft.X + 10) {
 
                     //Erase the previous rectangle
                     g.DrawRectangle(EraserPen, CurrentTopLeft.X, CurrentTopLeft.Y, RectangleWidth, RectangleHeight);
@@ -394,11 +359,10 @@ namespace TestGui {
 
                 }
             }
-            if (CurrentAction == ClickAction.TopRightSizing)
-            {
 
-                if (Cursor.Position.X > CurrentTopLeft.X + 10 && Cursor.Position.Y < CurrentBottomRight.Y - 10)
-                {
+            if (CurrentAction == ClickAction.TopRightSizing) {
+
+                if (Cursor.Position.X > CurrentTopLeft.X + 10 && Cursor.Position.Y < CurrentBottomRight.Y - 10) {
 
                     //Erase the previous rectangle
                     g.DrawRectangle(EraserPen, CurrentTopLeft.X, CurrentTopLeft.Y, RectangleWidth, RectangleHeight);
@@ -410,11 +374,10 @@ namespace TestGui {
 
                 }
             }
-            if (CurrentAction == ClickAction.BottomRightSizing)
-            {
 
-                if (Cursor.Position.X > CurrentTopLeft.X + 10 && Cursor.Position.Y > CurrentTopLeft.Y + 10)
-                {
+            if (CurrentAction == ClickAction.BottomRightSizing) {
+
+                if (Cursor.Position.X > CurrentTopLeft.X + 10 && Cursor.Position.Y > CurrentTopLeft.Y + 10) {
 
                     //Erase the previous rectangle
                     g.DrawRectangle(EraserPen, CurrentTopLeft.X, CurrentTopLeft.Y, RectangleWidth, RectangleHeight);
@@ -426,11 +389,10 @@ namespace TestGui {
 
                 }
             }
-            if (CurrentAction == ClickAction.TopSizing)
-            {
 
-                if (Cursor.Position.Y < CurrentBottomRight.Y - 10)
-                {
+            if (CurrentAction == ClickAction.TopSizing) {
+
+                if (Cursor.Position.Y < CurrentBottomRight.Y - 10) {
 
                     //Erase the previous rectangle
                     g.DrawRectangle(EraserPen, CurrentTopLeft.X, CurrentTopLeft.Y, RectangleWidth, RectangleHeight);
@@ -440,11 +402,9 @@ namespace TestGui {
 
                 }
             }
-            if (CurrentAction == ClickAction.BottomSizing)
-            {
+            if (CurrentAction == ClickAction.BottomSizing) {
 
-                if (Cursor.Position.Y > CurrentTopLeft.Y + 10)
-                {
+                if (Cursor.Position.Y > CurrentTopLeft.Y + 10) {
 
                     //Erase the previous rectangle
                     g.DrawRectangle(EraserPen, CurrentTopLeft.X, CurrentTopLeft.Y, RectangleWidth, RectangleHeight);
@@ -458,61 +418,48 @@ namespace TestGui {
 
         }
 
-        private void DragSelection()
-        {
+
+        /// <summary>
+        /// Drag the selection
+        /// </summary>
+        private void DragSelection() {
             //Ensure that the rectangle stays within the bounds of the screen
 
             //Erase the previous rectangle
             g.DrawRectangle(EraserPen, CurrentTopLeft.X, CurrentTopLeft.Y, RectangleWidth, RectangleHeight);
 
-            if (Cursor.Position.X - DragClickRelative.X > 0 && Cursor.Position.X - DragClickRelative.X + RectangleWidth < System.Windows.Forms.Screen.PrimaryScreen.Bounds.Width)
-            {
+            if (Cursor.Position.X - DragClickRelative.X > 0 && Cursor.Position.X - DragClickRelative.X + RectangleWidth < System.Windows.Forms.Screen.PrimaryScreen.Bounds.Width) {
 
                 CurrentTopLeft.X = Cursor.Position.X - DragClickRelative.X;
                 CurrentBottomRight.X = CurrentTopLeft.X + RectangleWidth;
 
-            }
-            else
+            } else
                 //Selection area has reached the right side of the screen
-                if (Cursor.Position.X - DragClickRelative.X > 0)
-                {
-
+                if (Cursor.Position.X - DragClickRelative.X > 0) {
                     CurrentTopLeft.X = System.Windows.Forms.Screen.PrimaryScreen.Bounds.Width - RectangleWidth;
                     CurrentBottomRight.X = CurrentTopLeft.X + RectangleWidth;
-
-                }
+                } 
                 //Selection area has reached the left side of the screen
-                else
-                {
-
+                else {
                     CurrentTopLeft.X = 0;
                     CurrentBottomRight.X = CurrentTopLeft.X + RectangleWidth;
-
                 }
 
-            if (Cursor.Position.Y - DragClickRelative.Y > 0 && Cursor.Position.Y - DragClickRelative.Y + RectangleHeight < System.Windows.Forms.Screen.PrimaryScreen.Bounds.Height)
-            {
-
+            if (Cursor.Position.Y - DragClickRelative.Y > 0 && Cursor.Position.Y - DragClickRelative.Y + RectangleHeight < System.Windows.Forms.Screen.PrimaryScreen.Bounds.Height) {
                 CurrentTopLeft.Y = Cursor.Position.Y - DragClickRelative.Y;
                 CurrentBottomRight.Y = CurrentTopLeft.Y + RectangleHeight;
 
             }
             else
                 //Selection area has reached the bottom of the screen
-                if (Cursor.Position.Y - DragClickRelative.Y > 0)
-                {
-
+                if (Cursor.Position.Y - DragClickRelative.Y > 0) {
                     CurrentTopLeft.Y = System.Windows.Forms.Screen.PrimaryScreen.Bounds.Height - RectangleHeight;
                     CurrentBottomRight.Y = CurrentTopLeft.Y + RectangleHeight;
-
                 }
                 //Selection area has reached the top of the screen
-                else
-                {
-
+                else {
                     CurrentTopLeft.Y = 0;
                     CurrentBottomRight.Y = CurrentTopLeft.Y + RectangleHeight;
-
                 }
 
             //Draw a new rectangle
@@ -520,8 +467,11 @@ namespace TestGui {
 
         }
 
-        private void DrawSelection()
-        {
+
+        /// <summary>
+        /// Draw a selection
+        /// </summary>
+        private void DrawSelection() {
 
             this.Cursor = Cursors.Arrow;
 
@@ -529,15 +479,12 @@ namespace TestGui {
             g.DrawRectangle(EraserPen, CurrentTopLeft.X, CurrentTopLeft.Y, CurrentBottomRight.X - CurrentTopLeft.X, CurrentBottomRight.Y - CurrentTopLeft.Y);
 
             //Calculate X Coordinates
-            if (Cursor.Position.X < ClickPoint.X)
-            {
+            if (Cursor.Position.X < ClickPoint.X) {
 
                 CurrentTopLeft.X = Cursor.Position.X;
                 CurrentBottomRight.X = ClickPoint.X;
 
-            }
-            else
-            {
+            } else {
 
                 CurrentTopLeft.X = ClickPoint.X;
                 CurrentBottomRight.X = Cursor.Position.X;
@@ -545,15 +492,12 @@ namespace TestGui {
             }
 
             //Calculate Y Coordinates
-            if (Cursor.Position.Y < ClickPoint.Y)
-            {
+            if (Cursor.Position.Y < ClickPoint.Y) {
 
                 CurrentTopLeft.Y = Cursor.Position.Y;
                 CurrentBottomRight.Y = ClickPoint.Y;
 
-            }
-            else
-            {
+            } else {
 
                 CurrentTopLeft.Y = ClickPoint.Y;
                 CurrentBottomRight.Y = Cursor.Position.Y;

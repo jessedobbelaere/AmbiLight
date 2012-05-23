@@ -8,10 +8,15 @@ using System.Text;
 using System.Windows.Forms;
 
 namespace TestGui.UserControls {
+    
     /// <summary>
-    /// Basisklasse waar elke andere pc effecten instellingen-usercontrol van erft
+    /// Parentclass for every other Effects usercontrol to inherit off
     /// </summary>
     public partial class EffectUC : ArduinoUC {
+        
+        /// <summary>
+        /// Default constructor
+        /// </summary>
         public EffectUC() {
             InitializeComponent();
         }

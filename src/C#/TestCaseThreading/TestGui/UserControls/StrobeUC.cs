@@ -8,11 +8,18 @@ using System.Text;
 using System.Windows.Forms;
 
 namespace TestGui.UserControls {
+    /// <summary>
+    /// The Strobe usercontrol
+    /// </summary>
     public partial class StrobeUC : ArduinoUC {
+        
+        /// <summary>
+        /// The default constructor
+        /// </summary>
         public StrobeUC() {
             InitializeComponent();
         }
 
-        //verdere implementatie moet ng gebeuren
+
     }
 }

@@ -6,11 +6,13 @@ using System.Drawing;
 using System.Windows.Forms;
 
 namespace TestCaseThreading.ColorSources {
-    interface ColorSource {
-                
+    
+    /// <summary>
+    /// Color source interface
+    /// </summary>
+    interface ColorSource {          
         void Start();
         void Stop();
         void Output(byte channel, byte r, byte g, byte b);
-        
     }
 }
