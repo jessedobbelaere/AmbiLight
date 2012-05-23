@@ -41,7 +41,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		882294A2153B10AF008F8355 /* KaHo Ambilight.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "KaHo Ambilight.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		882294A2153B10AF008F8355 /* iAmbilight.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iAmbilight.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		882294A6153B10AF008F8355 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		882294A8153B10AF008F8355 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		882294AA153B10AF008F8355 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -117,7 +117,7 @@
 		882294A3153B10AF008F8355 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				882294A2153B10AF008F8355 /* KaHo Ambilight.app */,
+				882294A2153B10AF008F8355 /* iAmbilight.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -241,7 +241,7 @@
 			);
 			name = Ambilightv2;
 			productName = Ambilightv2;
-			productReference = 882294A2153B10AF008F8355 /* KaHo Ambilight.app */;
+			productReference = 882294A2153B10AF008F8355 /* iAmbilight.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -391,7 +391,7 @@
 				GCC_PREFIX_HEADER = "Ambilightv2/Ambilightv2-Prefix.pch";
 				INFOPLIST_FILE = "Ambilightv2/Ambilightv2-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
-				PRODUCT_NAME = "KaHo Ambilight";
+				PRODUCT_NAME = iAmbilight;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -404,7 +404,7 @@
 				GCC_PREFIX_HEADER = "Ambilightv2/Ambilightv2-Prefix.pch";
 				INFOPLIST_FILE = "Ambilightv2/Ambilightv2-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
-				PRODUCT_NAME = "KaHo Ambilight";
+				PRODUCT_NAME = iAmbilight;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

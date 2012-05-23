@@ -2,7 +2,7 @@
 //  SecondViewController.m
 //  Ambilightv2
 //
-//  Created by Jesse Dobbelaere on 15/04/12.
+//  Created by Jesse Dobbelaere on 20/05/12.
 //  Copyright (c) 2012. All rights reserved.
 //
 
@@ -22,15 +22,25 @@
 @synthesize connectButton;
 
 // View has loaded
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
     
-    NSLog(@"Settings geladen");        
+    NSLog(@"Settings geladen");  
+    
+    
+    //Load user preferences
+    NSString *ipAdres = [[NSUserDefaults standardUserDefaults] stringForKey: @"ipAdres"];
+    NSLog(ipAdres);
+    
+    if([ipAdres length] != 0) {
+        ipAdresInput.text = ipAdres;
+    }
+
 }
 
 
+// View did unload
 - (void)viewDidUnload
 {
     [self setIpAdresInput:nil];
@@ -39,6 +49,7 @@
     [super viewDidUnload];
     // Release any retained subviews of the main view.
 }
+
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
@@ -62,6 +73,10 @@
         } else {
             NSLog(@"Foutje!");
         }
+        
+        // Save IP to user preferences
+        NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+        [userDefaults setObject:ambiConnection.ipAdres forKey:@"ipAdres"];
     }
     
 }
@@ -71,11 +86,13 @@
     [sender resignFirstResponder];
 }
 
-
+// Background was touched (hide the keyboard)
 -(IBAction)backgroundTouched:(id)sender {
     [ipAdresInput resignFirstResponder];
 }
 
+
+// Is parameter an ip address?
 - (BOOL)isIp:(NSString*)string{
     struct in_addr pin;
     int success = inet_aton([string UTF8String],&pin);

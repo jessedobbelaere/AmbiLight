@@ -2,7 +2,7 @@
 //  FirstViewController.m
 //  Ambilightv2
 //
-//  Created by Jesse Dobbelaere on 15/04/12.
+//  Created by Jesse Dobbelaere on 20/05/12.
 //  Copyright (c) 2012. All rights reserved.
 //
 
