@@ -36,3 +36,4 @@ Z:\Dropbox\KAHO\2ICT\Projecten1\src\C#\TestCaseThreading\TestGui\obj\x86\Release
 Z:\Dropbox\KAHO\2ICT\Projecten1\src\C#\TestCaseThreading\TestGui\obj\x86\Release\GenerateResource.write.1.tlog
 Z:\Dropbox\KAHO\2ICT\Projecten1\src\C#\TestCaseThreading\TestGui\obj\x86\Release\TestGui.exe
 Z:\Dropbox\KAHO\2ICT\Projecten1\src\C#\TestCaseThreading\TestGui\obj\x86\Release\TestGui.pdb
+C:\AmbiLight\src\C#\TestCaseThreading\TestGui\obj\x86\Release\TestGui.NewRegion.resources

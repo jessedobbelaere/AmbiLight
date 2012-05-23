@@ -64,10 +64,9 @@ namespace TestGui {
         private NewSection AddNewSection;
 
         Graphics g;
-        Pen MyPen = new Pen(Color.Black, 1);
         SolidBrush TransparentBrush = new SolidBrush(Color.White);
-        Pen EraserPen = new Pen(Color.FromArgb(255, 255, 192), 1);
-        SolidBrush eraserBrush = new SolidBrush(Color.FromArgb(255, 255, 192));
+        SolidBrush eraserBrush = new SolidBrush(Color.FromArgb(64, 64, 64));
+
 
         protected override void OnMouseClick(MouseEventArgs e) {
 
@@ -82,16 +81,13 @@ namespace TestGui {
         }
 
         private Form m_InstanceRef = null;
-        public Form InstanceRef
-        {
-            get
-            {
+        public Form InstanceRef {
+            get {
 
                 return m_InstanceRef;
 
             }
-            set
-            {
+            set {
 
                 m_InstanceRef = value;
 
@@ -119,8 +115,7 @@ namespace TestGui {
         /// <summary>
         /// Save the selection
         /// </summary>
-        /// <param name="showCursor">Show the cursor yes/no</param>
-        public void SaveSelection(bool showCursor) {       
+        public void SaveSelection() {       
             AddNewSection(CurrentTopLeft.X, CurrentTopLeft.Y, CurrentBottomRight.X - CurrentTopLeft.X, CurrentBottomRight.Y - CurrentTopLeft.Y);
             this.Close();
         }
@@ -132,7 +127,9 @@ namespace TestGui {
         /// <param name="e">Event args</param>
         public void key_press(object sender, KeyEventArgs e) {
             if ((e.KeyCode.ToString() == "S" || e.KeyCode == Keys.Enter )&& (RectangleDrawn && (CursorPosition() == CursPos.WithinSelectionArea || CursorPosition() == CursPos.OutsideSelectionArea))) {
-                SaveSelection(true);
+                SaveSelection();
+            } else if (e.KeyCode == Keys.Escape) {
+                this.Close();
             }
         }
 
@@ -145,7 +142,7 @@ namespace TestGui {
         /// <param name="e">Event args</param>
         private void mouse_DClick(object sender, MouseEventArgs e) {
             if (RectangleDrawn && (CursorPosition() == CursPos.WithinSelectionArea || CursorPosition() == CursPos.OutsideSelectionArea)) {
-                SaveSelection(false);
+                SaveSelection();
             }
         }
 
@@ -307,10 +304,10 @@ namespace TestGui {
                 if (Cursor.Position.X < CurrentBottomRight.X - 10) {
 
                     //Erase the previous rectangle
-                    g.DrawRectangle(EraserPen, CurrentTopLeft.X, CurrentTopLeft.Y, RectangleWidth, RectangleHeight);
+                    g.FillRectangle(eraserBrush, CurrentTopLeft.X, CurrentTopLeft.Y, RectangleWidth, RectangleHeight);
                     CurrentTopLeft.X = Cursor.Position.X;
                     RectangleWidth = CurrentBottomRight.X - CurrentTopLeft.X;
-                    g.DrawRectangle(MyPen, CurrentTopLeft.X, CurrentTopLeft.Y, RectangleWidth, RectangleHeight);
+                    g.FillRectangle(TransparentBrush, CurrentTopLeft.X, CurrentTopLeft.Y, RectangleWidth, RectangleHeight);
 
                 }
 
@@ -321,12 +318,12 @@ namespace TestGui {
                 if (Cursor.Position.X < CurrentBottomRight.X - 10 && Cursor.Position.Y < CurrentBottomRight.Y - 10) {
 
                     //Erase the previous rectangle
-                    g.DrawRectangle(EraserPen, CurrentTopLeft.X, CurrentTopLeft.Y, RectangleWidth, RectangleHeight);
+                    g.FillRectangle(eraserBrush, CurrentTopLeft.X, CurrentTopLeft.Y, RectangleWidth, RectangleHeight);
                     CurrentTopLeft.X = Cursor.Position.X;
                     CurrentTopLeft.Y = Cursor.Position.Y;
                     RectangleWidth = CurrentBottomRight.X - CurrentTopLeft.X;
                     RectangleHeight = CurrentBottomRight.Y - CurrentTopLeft.Y;
-                    g.DrawRectangle(MyPen, CurrentTopLeft.X, CurrentTopLeft.Y, RectangleWidth, RectangleHeight);
+                    g.FillRectangle(TransparentBrush, CurrentTopLeft.X, CurrentTopLeft.Y, RectangleWidth, RectangleHeight);
 
                 }
             }
@@ -336,12 +333,12 @@ namespace TestGui {
                 if (Cursor.Position.X < CurrentBottomRight.X - 10 && Cursor.Position.Y > CurrentTopLeft.Y + 10) {
 
                     //Erase the previous rectangle
-                    g.DrawRectangle(EraserPen, CurrentTopLeft.X, CurrentTopLeft.Y, RectangleWidth, RectangleHeight);
+                    g.FillRectangle(eraserBrush, CurrentTopLeft.X, CurrentTopLeft.Y, RectangleWidth, RectangleHeight);
                     CurrentTopLeft.X = Cursor.Position.X;
                     CurrentBottomRight.Y = Cursor.Position.Y;
                     RectangleWidth = CurrentBottomRight.X - CurrentTopLeft.X;
                     RectangleHeight = CurrentBottomRight.Y - CurrentTopLeft.Y;
-                    g.DrawRectangle(MyPen, CurrentTopLeft.X, CurrentTopLeft.Y, RectangleWidth, RectangleHeight);
+                    g.FillRectangle(TransparentBrush, CurrentTopLeft.X, CurrentTopLeft.Y, RectangleWidth, RectangleHeight);
 
                 }
 
@@ -352,10 +349,10 @@ namespace TestGui {
                 if (Cursor.Position.X > CurrentTopLeft.X + 10) {
 
                     //Erase the previous rectangle
-                    g.DrawRectangle(EraserPen, CurrentTopLeft.X, CurrentTopLeft.Y, RectangleWidth, RectangleHeight);
+                    g.FillRectangle(eraserBrush, CurrentTopLeft.X, CurrentTopLeft.Y, RectangleWidth, RectangleHeight);
                     CurrentBottomRight.X = Cursor.Position.X;
                     RectangleWidth = CurrentBottomRight.X - CurrentTopLeft.X;
-                    g.DrawRectangle(MyPen, CurrentTopLeft.X, CurrentTopLeft.Y, RectangleWidth, RectangleHeight);
+                    g.FillRectangle(TransparentBrush, CurrentTopLeft.X, CurrentTopLeft.Y, RectangleWidth, RectangleHeight);
 
                 }
             }
@@ -365,12 +362,12 @@ namespace TestGui {
                 if (Cursor.Position.X > CurrentTopLeft.X + 10 && Cursor.Position.Y < CurrentBottomRight.Y - 10) {
 
                     //Erase the previous rectangle
-                    g.DrawRectangle(EraserPen, CurrentTopLeft.X, CurrentTopLeft.Y, RectangleWidth, RectangleHeight);
+                    g.FillRectangle(eraserBrush, CurrentTopLeft.X, CurrentTopLeft.Y, RectangleWidth, RectangleHeight);
                     CurrentBottomRight.X = Cursor.Position.X;
                     CurrentTopLeft.Y = Cursor.Position.Y;
                     RectangleWidth = CurrentBottomRight.X - CurrentTopLeft.X;
                     RectangleHeight = CurrentBottomRight.Y - CurrentTopLeft.Y;
-                    g.DrawRectangle(MyPen, CurrentTopLeft.X, CurrentTopLeft.Y, RectangleWidth, RectangleHeight);
+                    g.FillRectangle(TransparentBrush, CurrentTopLeft.X, CurrentTopLeft.Y, RectangleWidth, RectangleHeight);
 
                 }
             }
@@ -380,12 +377,12 @@ namespace TestGui {
                 if (Cursor.Position.X > CurrentTopLeft.X + 10 && Cursor.Position.Y > CurrentTopLeft.Y + 10) {
 
                     //Erase the previous rectangle
-                    g.DrawRectangle(EraserPen, CurrentTopLeft.X, CurrentTopLeft.Y, RectangleWidth, RectangleHeight);
+                    g.FillRectangle(eraserBrush, CurrentTopLeft.X, CurrentTopLeft.Y, RectangleWidth, RectangleHeight);
                     CurrentBottomRight.X = Cursor.Position.X;
                     CurrentBottomRight.Y = Cursor.Position.Y;
                     RectangleWidth = CurrentBottomRight.X - CurrentTopLeft.X;
                     RectangleHeight = CurrentBottomRight.Y - CurrentTopLeft.Y;
-                    g.DrawRectangle(MyPen, CurrentTopLeft.X, CurrentTopLeft.Y, RectangleWidth, RectangleHeight);
+                    g.FillRectangle(TransparentBrush, CurrentTopLeft.X, CurrentTopLeft.Y, RectangleWidth, RectangleHeight);
 
                 }
             }
@@ -395,10 +392,10 @@ namespace TestGui {
                 if (Cursor.Position.Y < CurrentBottomRight.Y - 10) {
 
                     //Erase the previous rectangle
-                    g.DrawRectangle(EraserPen, CurrentTopLeft.X, CurrentTopLeft.Y, RectangleWidth, RectangleHeight);
+                    g.FillRectangle(eraserBrush, CurrentTopLeft.X, CurrentTopLeft.Y, RectangleWidth, RectangleHeight);
                     CurrentTopLeft.Y = Cursor.Position.Y;
                     RectangleHeight = CurrentBottomRight.Y - CurrentTopLeft.Y;
-                    g.DrawRectangle(MyPen, CurrentTopLeft.X, CurrentTopLeft.Y, RectangleWidth, RectangleHeight);
+                    g.FillRectangle(TransparentBrush, CurrentTopLeft.X, CurrentTopLeft.Y, RectangleWidth, RectangleHeight);
 
                 }
             }
@@ -407,10 +404,10 @@ namespace TestGui {
                 if (Cursor.Position.Y > CurrentTopLeft.Y + 10) {
 
                     //Erase the previous rectangle
-                    g.DrawRectangle(EraserPen, CurrentTopLeft.X, CurrentTopLeft.Y, RectangleWidth, RectangleHeight);
+                    g.FillRectangle(eraserBrush, CurrentTopLeft.X, CurrentTopLeft.Y, RectangleWidth, RectangleHeight);
                     CurrentBottomRight.Y = Cursor.Position.Y;
                     RectangleHeight = CurrentBottomRight.Y - CurrentTopLeft.Y;
-                    g.DrawRectangle(MyPen, CurrentTopLeft.X, CurrentTopLeft.Y, RectangleWidth, RectangleHeight);
+                    g.FillRectangle(TransparentBrush, CurrentTopLeft.X, CurrentTopLeft.Y, RectangleWidth, RectangleHeight);
 
                 }
 
@@ -426,7 +423,7 @@ namespace TestGui {
             //Ensure that the rectangle stays within the bounds of the screen
 
             //Erase the previous rectangle
-            g.DrawRectangle(EraserPen, CurrentTopLeft.X, CurrentTopLeft.Y, RectangleWidth, RectangleHeight);
+            g.FillRectangle(eraserBrush, CurrentTopLeft.X, CurrentTopLeft.Y, RectangleWidth, RectangleHeight);
 
             if (Cursor.Position.X - DragClickRelative.X > 0 && Cursor.Position.X - DragClickRelative.X + RectangleWidth < System.Windows.Forms.Screen.PrimaryScreen.Bounds.Width) {
 
@@ -463,8 +460,8 @@ namespace TestGui {
                 }
 
             //Draw a new rectangle
-            g.DrawRectangle(MyPen, CurrentTopLeft.X, CurrentTopLeft.Y, RectangleWidth, RectangleHeight);
-
+            g.FillRectangle(TransparentBrush, CurrentTopLeft.X, CurrentTopLeft.Y, RectangleWidth, RectangleHeight);
+            
         }
 
 
@@ -476,7 +473,9 @@ namespace TestGui {
             this.Cursor = Cursors.Arrow;
 
             //Erase the previous rectangle
-            g.DrawRectangle(EraserPen, CurrentTopLeft.X, CurrentTopLeft.Y, CurrentBottomRight.X - CurrentTopLeft.X, CurrentBottomRight.Y - CurrentTopLeft.Y);
+            g.FillRectangle(eraserBrush, CurrentTopLeft.X, CurrentTopLeft.Y, CurrentBottomRight.X - CurrentTopLeft.X, CurrentBottomRight.Y - CurrentTopLeft.Y);
+
+
 
             //Calculate X Coordinates
             if (Cursor.Position.X < ClickPoint.X) {
@@ -505,7 +504,7 @@ namespace TestGui {
             }
 
             //Draw a new rectangle
-            g.DrawRectangle(MyPen, CurrentTopLeft.X, CurrentTopLeft.Y, CurrentBottomRight.X - CurrentTopLeft.X, CurrentBottomRight.Y - CurrentTopLeft.Y);
+            g.FillRectangle(TransparentBrush, CurrentTopLeft.X, CurrentTopLeft.Y, CurrentBottomRight.X - CurrentTopLeft.X, CurrentBottomRight.Y - CurrentTopLeft.Y);
 
         }
 
