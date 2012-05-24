@@ -96,7 +96,7 @@ namespace TestCaseThreading {
         /// </summary>
         public void StopSource() {
             this.source.Stop();
-            this.serial.Send(15, 0, 0, 0);
+            this.serial.Send(15, 0, 0, 0, 0);
         }
 
 

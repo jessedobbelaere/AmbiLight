@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestGui", "TestGui\TestGui.csproj", "{4AD427E9-19D6-46FE-869F-410B55F1CA81}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AmbilightApp", "TestGui\AmbilightApp.csproj", "{4AD427E9-19D6-46FE-869F-410B55F1CA81}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AmbilightThreading", "AmbilightThreading\AmbilightThreading.csproj", "{BD054CDA-FB80-4603-B593-4316F906DDD9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AmbilightThreaded", "AmbilightThreading\AmbilightThreaded.csproj", "{BD054CDA-FB80-4603-B593-4316F906DDD9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

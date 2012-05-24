@@ -51,11 +51,11 @@
     <Compile Include="Data Layer\GDI.cs" />
     <Compile Include="Data Layer\SerialCOM.cs" />
     <Compile Include="Data Layer\Server.cs" />
-    <Compile Include="Overkoepelend\ColorSources\ColorSource.cs" />
-    <Compile Include="Overkoepelend\ColorSources\Screencap.cs" />
-    <Compile Include="Overkoepelend\ColorSources\ScreencapThreaded.cs" />
-    <Compile Include="Overkoepelend\Delegates.cs" />
-    <Compile Include="Overkoepelend\Enumerations.cs" />
+    <Compile Include="General\ColorSources\ColorSource.cs" />
+    <Compile Include="General\ColorSources\Screencap.cs" />
+    <Compile Include="General\ColorSources\ScreencapThreaded.cs" />
+    <Compile Include="General\Delegates.cs" />
+    <Compile Include="General\Enumerations.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

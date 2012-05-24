@@ -22,12 +22,15 @@ namespace TestCaseThreading {
         private UpdateLogDelegate deleg;
         private ArduinoUC modeconfigUC;
         private RegiosUC regiosUC;
+        private ContextMenu notifyIconMenu;
 
         /// <summary>
         /// Constructor
         /// </summary>
         public Gui() {
             InitializeComponent();
+
+            notifyIcon1.Visible = false;
 
             FillCombobox(comboBoxSource, typeof(Source)); //screencap combobox
             comboBoxSource.SelectedIndex = 1;
@@ -256,7 +259,7 @@ namespace TestCaseThreading {
         /// <param name="sender">Object that raised the event</param>
         /// <param name="e">Event arguments</param>
         private void exitToolStripMenuItem_Click(object sender, EventArgs e) {
-            Environment.Exit(0);
+            Application.Exit();
         }
 
         /// <summary>
@@ -338,6 +341,45 @@ namespace TestCaseThreading {
             }
         }
 
+
+
+        /// <summary>
+        /// Minimize to tray
+        /// </summary>
+        /// <param name="sender">Object that sends the event</param>
+        /// <param name="e">Event args</param>
+        private void minimizeToTrayToolStripMenuItem_Click(object sender, EventArgs e) {
+            Hide();
+            notifyIcon1.Visible = true;
+            notifyIcon1.BalloonTipTitle = "Ambilight op achtergrond";
+            notifyIcon1.BalloonTipText = "De Ambilight app is nu verplaatst naar de achtergrond. Klik op het icoontje om het terug tevoorschijn te halen...";
+            notifyIcon1.ShowBalloonTip(3000);
+            notifyIconMenu = new ContextMenu();
+            createIconMenuStructure();
+        }
+
+        /// <summary>
+        /// Click the tray icon, moves back the app to the foreground
+        /// </summary>
+        /// <param name="sender">Object that sends the event</param>
+        /// <param name="e">Event args</param>
+        private void notifyIcon1_MouseClick(object sender, MouseEventArgs e) {
+            this.Show();
+            notifyIcon1.Visible = false;
+            notifyIcon1.ShowBalloonTip(1000);
+            WindowState = FormWindowState.Normal;
+        }
+
+        /// <summary>
+        /// Create the notify icon right click menu
+        /// </summary>
+        public void createIconMenuStructure() {
+            // Add menu items to context menu.
+            notifyIconMenu.MenuItems.Add("Show");
+            notifyIconMenu.MenuItems.Add("Exit");
+            notifyIconMenu.MenuItems[1].Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
+            notifyIcon1.ContextMenu = notifyIconMenu;
+        }
 
     }
 }

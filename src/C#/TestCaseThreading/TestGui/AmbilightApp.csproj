@@ -176,9 +176,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\AmbilightThreading\AmbilightThreading.csproj">
+    <ProjectReference Include="..\AmbilightThreading\AmbilightThreaded.csproj">
       <Project>{BD054CDA-FB80-4603-B593-4316F906DDD9}</Project>
-      <Name>AmbilightThreading</Name>
+      <Name>AmbilightThreaded</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
