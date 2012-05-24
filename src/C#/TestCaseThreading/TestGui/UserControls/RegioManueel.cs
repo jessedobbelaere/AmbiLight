@@ -25,9 +25,11 @@ namespace TestGui.UserControls {
         public RegioManueel() {
             InitializeComponent();
             ambilightRegions = new List<SingleRegioUC>();
-            
-            GetXmlData();
-            ReplaceUC();
+
+            if (File.Exists(@".\test.xml")) {
+                GetXmlData();
+                ReplaceUC();
+            }
         }
 
         /// <summary>
