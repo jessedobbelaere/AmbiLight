@@ -78,3 +78,5 @@ Z:\Dropbox\KAHO\2ICT\Projecten1\src\C#\AmbilightApp\AmbilightApp\obj\x86\Release
 Z:\Dropbox\KAHO\2ICT\Projecten1\src\C#\AmbilightApp\AmbilightApp\obj\x86\Release\TestGui.UserControls.StrobeUC.resources
 Z:\Dropbox\KAHO\2ICT\Projecten1\src\C#\AmbilightApp\AmbilightApp\obj\x86\Release\GenerateResource.read.1.tlog
 Z:\Dropbox\KAHO\2ICT\Projecten1\src\C#\AmbilightApp\AmbilightApp\obj\x86\Release\GenerateResource.write.1.tlog
+\\psf\Home\Dropbox\KAHO\2ICT\Projecten1\src\C#\AmbilightApp\AmbilightApp\obj\x86\Release\TestGui.exe
+\\psf\Home\Dropbox\KAHO\2ICT\Projecten1\src\C#\AmbilightApp\AmbilightApp\obj\x86\Release\TestGui.pdb

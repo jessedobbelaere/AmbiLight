@@ -1,31 +1,116 @@
 <?xml version="1.0"?>
 <ArrayOfRectangle xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+
+
+  <Rectangle>
+    <Location>
+      <X>1405</X>
+      <Y>700</Y>
+    </Location>
+    <Size>
+      <Width>275</Width>
+      <Height>350</Height>
+    </Size>
+  </Rectangle>
+
+  <Rectangle>
+    <Location>
+      <X>1405</X>
+      <Y>350</Y>
+    </Location>
+    <Size>
+      <Width>275</Width>
+      <Height>350</Height>
+    </Size>
+  </Rectangle>
+
+  <Rectangle>
+    <Location>
+      <X>1405</X>
+      <Y>0</Y>
+    </Location>
+    <Size>
+      <Width>275</Width>
+      <Height>350</Height>
+    </Size>
+  </Rectangle>
+
+  <Rectangle>
+    <Location>
+      <X>1260</X>
+      <Y>0</Y>
+    </Location>
+    <Size>
+      <Width>420</Width>
+      <Height>275</Height>
+    </Size>
+  </Rectangle>
+
+  <Rectangle>
+    <Location>
+      <X>840</X>
+      <Y>0</Y>
+    </Location>
+    <Size>
+      <Width>420</Width>
+      <Height>275</Height>
+    </Size>
+  </Rectangle>
+
+  <Rectangle>
+    <Location>
+      <X>420</X>
+      <Y>0</Y>
+    </Location>
+    <Size>
+      <Width>420</Width>
+      <Height>275</Height>
+    </Size>
+  </Rectangle>
+
   <Rectangle>
     <Location>
       <X>0</X>
       <Y>0</Y>
     </Location>
     <Size>
-      <Width>679</Width>
-      <Height>767</Height>
+      <Width>420</Width>
+      <Height>275</Height>
     </Size>
-    <X>0</X>
-    <Y>0</Y>
-    <Width>679</Width>
-    <Height>767</Height>
   </Rectangle>
+
   <Rectangle>
     <Location>
-      <X>658</X>
+      <X>0</X>
       <Y>0</Y>
     </Location>
     <Size>
-      <Width>756</Width>
-      <Height>767</Height>
+      <Width>275</Width>
+      <Height>350</Height>
     </Size>
-    <X>658</X>
-    <Y>0</Y>
-    <Width>756</Width>
-    <Height>767</Height>
   </Rectangle>
+
+  <Rectangle>
+    <Location>
+      <X>0</X>
+      <Y>350</Y>
+    </Location>
+    <Size>
+      <Width>275</Width>
+      <Height>350</Height>
+    </Size>
+  </Rectangle>
+
+  <Rectangle>
+    <Location>
+      <X>0</X>
+      <Y>700</Y>
+    </Location>
+    <Size>
+      <Width>275</Width>
+      <Height>350</Height>
+    </Size>
+  </Rectangle>
+
+
 </ArrayOfRectangle>

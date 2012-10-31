@@ -1,17 +1,19 @@
-# Projecten1: Ambilight voor HTPC
+# KAHO Projecten1: Ambilight voor HTPC
 
-## Omschrijving van het project
-Een achtergrondverlichtingssysteem, “Ambilight”, dat tussen muur en beeldscherm kan gemonteerd worden, voorzien van een gebruiksvriendelijk softwarepakket dat een groot aantal verlichtingsmogelijkheden voorziet. Met de ambilight is het mogelijk om in real-time een lichtsignaal te genereren die naadloos samengaat met het kleurenpalet van het beeldscherm.
+## Description of the project
+A backgroundlight system, mounted between the wall and the display. We wrote our own software application to control and monitor the computer display. With the ambilight, it's possible to generate light in real-time that simulates the color palette on the computer display.
 
-Het eindproduct zal een achtergrondverlichtingssysteem zijn voor HTPC's die de filmbeleving veel intenser doet ervaren. We verwachten dat de software minimaal elke ledstrip afzonderlijk kan aansturen via een arduino microcontroller. Eén of meerdere kleuren worden in real-time bepaald op basis van het beeld dat het scherm op dat moment weergeeft. Met de software applicatie kan men de ledstrips koppelen aan een regio op het scherm die dan geanalyseerd kan worden. 
-Met de software kan gekozen worden tussen ambilight-modus en sfeerverlichting: een aantal licht- en overgangseffecten die bijvoorbeeld een kalmerend effect geven bij het beluisteren van muziek en als visualiser kunnen dienen.
-Als mogelijke uitbreiding kunnen we een webapplicatie of smartphone app ontwikkelen waarmee we op een efficiënte manier de voornaamste functies kunnen beheren.
+## Expectations of the project
+The end product will be a backgroundlight for HTPC that will improve and intensify the experience of watching a movie. We expect that the software will control each single ledstrip by using the Arduino microcontroller. One or more colors will be defined in real-time by monitoring the color on the computer display at the moment. With the software application we can bind physical ledstrips to a region on the screen that will be analysed. 
 
-## Logboek
-Voor het logboek van de software updates voorzien we voornamelijk de Commit history.
+We can choose between Ambilight-mode and ambient lighting (lounge-effect) in the software application. The ambient lighting is a series of light- and transition effects that give a calm and soothing effect while listening to music, relaxing, ...
 
-* do 01/03/2012: Eerste contactmoment
-* ma 19/03/2012: Bespreking Projecten1 met projectbegeleidster
-* di 20/03/2012: Bestelling elektronica
-* vr 23/03/2012: Levering RGB Ledstrip 5m + TLC5940NT IC componenten
+We can expand the possibilities of the Ambilight by developing a webapplication or remote control iPhone app.
+
+## Log
+* do 01/03/2012: First meeting with the group members
+* ma 19/03/2012: First meeting Projecten1 with Ms. Van Assche
+* di 20/03/2012: Order some more elektronics
+* vr 23/03/2012: Delivery RGB Ledstrip 5m + TLC5940NT IC componenten
 * do 29/03/2012: Samenkomst en eerste assemblage met test van zelfgeschreven ConsoleApp in C# om de RGB leds te sturen
+* We now use the GitHub commit history as logbook
