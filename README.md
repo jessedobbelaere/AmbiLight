@@ -10,6 +10,10 @@ We can choose between Ambilight-mode and ambient lighting (lounge-effect) in the
 
 We can expand the possibilities of the Ambilight by developing a webapplication or remote control iPhone app.
 
+## Final result
+You can view the video of our final result here: http://vimeo.com/44219238
+Enjoy!
+
 ## Log
 * do 01/03/2012: First meeting with the group members
 * ma 19/03/2012: First meeting Projecten1 with Ms. Van Assche
